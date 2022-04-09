@@ -1,0 +1,205 @@
+<app-navbar></app-navbar>
+<!--
+<body style="margin-top: 80px;">
+    <nav style="width:200px; margin-left: 180px;" class="navbar">
+        <input class="form-control" type="text" name="nom" [(ngModel)]="nom" (ngModelChange)="Search()" placeholder="nom du client">
+        <div class="button">
+        <input class="button1" type="submit" value="Recherche" (click)="getClients()">
+       </div>
+    </nav>
+
+      <table style="width: 80px;margin-left: 180px;" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Code Client</th>
+            <th>Matricule CNRPS</th>
+            <th>Cin</th>
+            <th (click)="sort('nom')">Nom&nbsp;<i class="fa fa-dark"></i></th>
+            <th>Prénom</th>
+            <th>Addresse Email</th>
+            <th>Numéro Téléphone</th>
+            <th>Numéro Fix</th>
+            <th>Ministere</th>
+            <th>Structure</th>
+          </tr>
+        </thead>
+      <tbody>
+        <tr *ngFor="let client of clients| paginate:{itemsPerPage:5,currentPage:page};">
+          <td>{{client.code_client}}</td>
+          <td>{{client.Matricule_cnrps}}</td>
+          <td>{{client.cin}}</td>
+          <td>{{client.nom}}</td>
+          <td>{{client.prenom}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.tel}}</td>
+          <td>{{client.fix}}</td>
+          <td>{{client.prenom}}</td>
+          <td>{{client.nom}}</td>
+        </tr>
+        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+      </tbody>
+    </table>
+</body>
+-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Elegant Table Design</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+</head>
+<body>
+<div class="container">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="search-box">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                <input type="text" name="nom" [(ngModel)]="nom" (ngModelChange)="Search()" class="form-control" placeholder="Search&hellip;">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <h2 class="text-center">Customer <b>Details</b></h2>
+          </div>
+
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Code Client</th>
+          <th>Matricule CNRPS</th>
+          <th>Cin</th>
+          <th (click)="sort('nom')">Nom&nbsp;<i class="fa fa-dark"></i></th>
+          <th>Prénom</th>
+          <th>Addresse Email</th>
+          <th>Numéro Téléphone</th>
+          <th>Numéro Fix</th>
+          <th>Ministere</th>
+          <th>Structure</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let client of clients| paginate:{itemsPerPage:5,currentPage:page};">
+          <td>{{client.code_client}}</td>
+          <td>{{client.Matricule_cnrps}}</td>
+          <td>{{client.cin}}</td>
+          <td>{{client.nom}}</td>
+          <td>{{client.prenom}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.tel}}</td>
+          <td>{{client.fix}}</td>
+          <td>{{client.prenom}}</td>
+          <td>{{client.nom}}</td>
+          <td>
+            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <div class="hint-text">Showing <b>{{page}}</b> out of <b>Pages</b></div>
+        <ul class="pagination">
+          <pagination-controls (pageChange)="page=$event"></pagination-controls>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Sans-serif">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div style="margin-top: 50px;" class="container">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+
+        <div class="table-title">
+          <div class="row">
+            <div class="col-xs-5">
+              <h2>Gestion <b>des Clients</b></h2>
+            </div>
+            <div class="col-xs-7">
+              <a (click)="toAdd()" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Creer Nouveau
+                  Client</span></a>
+              <a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Rechercher
+                  </span></a>
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Code Client</th>
+              <th>Matricule CNRPS</th>
+              <th>Cin</th>
+              <th (click)="sort('nom')">Nom&nbsp;<i class="fa fa-dark"></i></th>
+              <th>Prénom</th>
+              <th>Addresse Email</th>
+              <th>Numéro Téléphone</th>
+              <th>Numéro Fix</th>
+              <th>Ministere</th>
+              <th>Structure</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <tr *ngFor="let client of clients| paginate:{itemsPerPage:5,currentPage:page};">
+              <td>{{client.code_client}}</td>
+              <td>{{client.Matricule_cnrps}}</td>
+              <td>{{client.cin}}</td>
+              <td>{{client.nom}}</td>
+              <td>{{client.prenom}}</td>
+              <td>{{client.email}}</td>
+              <td>{{client.tel}}</td>
+              <td>{{client.fix}}</td>
+              <td>{{client.prenom}}</td>
+              <td>{{client.nom}}</td>
+              <td>
+                <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                <a (click)="deleteClient(client)" class="delete" title="Delete" data-toggle="tooltip"><i
+                    class="material-icons">&#xE872;</i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="clearfix">
+          <div class="hint-text">Showing <b>{{page}}</b> out of <b>Pages</b></div>
+          <pagination-controls class="pagination" (pageChange)="page=$event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
