@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="update-client.component.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+</head>
+
+<body>
+  <div class="container">
+   <div class="title">Details du client</div>
+    <div class="content">
+      <form (ngSubmit)="onSubmit()">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Code Client *</span>
+            <input type="number"  #code_client (ngModel)="clientToUpdate.code_client" class="form-control"
+              placeholder="Code Client">
+          </div>
+          <div class="input-box">
+            <span class="details">Mat *</span>
+            <input type="number"  #mat (ngModel)="clientToUpdate.mat" class="form-control"
+              placeholder="mat">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Nom *</span>
+            <input type="text" #nom (ngModel)="clientToUpdate.nom" class="form-control" placeholder="Nom :">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Prénom</span>
+            <input type="text"  #prenom (ngModel)="clientToUpdate.prenom" class="form-control"
+              placeholder="Prénom :">
+          </div>
+          <div class="input-box">
+            <span class="details">Adresse Email</span>
+            <input type="text"  #email (ngModel)="clientToUpdate.email" class="form-control"
+              placeholder="Enter email">
+          </div>
+          <div class="input-box">
+            <span class="details">Numéro de CIN *</span>
+            <input type="number"  #cin (ngModel)="clientToUpdate.cin" class="form-control"
+              placeholder="Numéro de cin">
+          </div>
+          <div class="input-box">
+            <span class="details">Numéro de télépone *</span>
+            <input type="number" #tel (ngModel)="clientToUpdate.tel" class="form-control"
+              placeholder="Numéro de Téléphone">
+          </div>
+          <div class="input-box">
+            <span class="details">Numéro de Fix *</span>
+            <input type="number"  #fix (ngModel)="clientToUpdate.fix" class="form-control"
+              placeholder="Numéro de Fix">
+          </div>
+          <div class="input-box">
+            <span class="details">Ministere</span>
+            <select  name="ministere" id="ministere" #ministere (ngModel)="clientToUpdate.ministere">
+              <option>Choisir la Ministere</option>
+              <option *ngFor="let m of ministeres">{{m}}</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details">Structure *</span>
+            <input type="text"  #structure (ngModel)="clientToUpdate.structure" class="form-control"
+              placeholder="Structure :">
+          </div>
+          <small style="margin-left: 20px;font-weight: 100;color: #4c6497;">Les Champs à * sont obligatoires</small>
+        </div>
+        <div class="button">
+          <input type="submit" value="Update">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

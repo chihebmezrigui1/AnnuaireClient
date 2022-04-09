@@ -175,7 +175,7 @@
             <tr>
             <tr *ngFor="let client of clients| paginate:{itemsPerPage:5,currentPage:page};">
               <td>{{client.code_client}}</td>
-              <td>{{client.Matricule_cnrps}}</td>
+              <td>{{client.mat}}</td>
               <td>{{client.cin}}</td>
               <td>{{client.nom}}</td>
               <td>{{client.prenom}}</td>
@@ -185,9 +185,9 @@
               <td>{{client.prenom}}</td>
               <td>{{client.nom}}</td>
               <td>
-                <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                <a (click)="deleteClient(client)" class="delete" title="Delete" data-toggle="tooltip"><i
+                <a href="#" class="view" title="Consulter" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                <a (click)="updateClient(client.idC)" class="edit" title="Modifier" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                <a (click)="deleteClient(client)" class="delete" title="Supprimer" data-toggle="tooltip"><i
                     class="material-icons">&#xE872;</i></a>
               </td>
             </tr>

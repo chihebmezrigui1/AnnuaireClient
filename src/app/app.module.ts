@@ -17,7 +17,8 @@ import { UserAuthService } from './services/userAuth/user-auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { AuthInterceptor } from './guard/auth.interceptor';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { ClientDetailsComponent } from './client-details/client-details.component';
+import { ClientDetailsComponent } from './client/client-details/client-details.component';
+import { UpdateClientComponent } from './client/update-client/update-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { ClientDetailsComponent } from './client-details/client-details.componen
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,

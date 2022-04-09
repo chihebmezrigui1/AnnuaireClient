@@ -27,13 +27,14 @@
             </div>
           </div>
           <div class="input-box">
-            <span class="details">Matricule Cnrps *</span>
-            <input type="number" formControlName="Matricule_cnrps" #Matricule_cnrps (ngModel)="Matricule_cnrps" class="form-control"
-              placeholder="40********" [ngClass]="{ 'is-invalid': (submitted && addForm.controls['Matricule_cnrps'].errors) || (!addForm.controls['Matricule_cnrps'].pristine && addForm.controls['Matricule_cnrps'].invalid) }">
+            <span class="details">Mat *</span>
+            <input type="number" formControlName="mat" #mat (ngModel)="mat" class="form-control"
+              placeholder="mat"
+              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid) }">
             <div class="invalid-feedback"
-              *ngIf="(submitted && addForm.controls['Matricule_cnrps'].errors) || (!addForm.controls['Matricule_cnrps'].pristine && addForm.controls['Matricule_cnrps'].invalid)">
-              <div *ngIf="addForm.controls['Matricule_cnrps'].errors['required']">Champ vide</div>
-              <div *ngIf="addForm.controls['Matricule_cnrps'].errors['pattern']">Code Client doit composé de 10 chiffres
+              *ngIf="(submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid)">
+              <div *ngIf="addForm.controls['mat'].errors['required']">Champ vide</div>
+              <div *ngIf="addForm.controls['mat'].errors['pattern']">Code Client doit composé de 10 chiffres
               </div>
             </div>
           </div>

@@ -10,5 +10,6 @@ export class Client {
     email:string;
     tel:number;
     fix:number;
+    mat:number;
     structure:Structure[];
 }

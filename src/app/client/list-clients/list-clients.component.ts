@@ -22,6 +22,19 @@ export class ListClientsComponent implements OnInit {
   page: number = 1;
   key: string = 'nom';
   reserve: boolean = false;
+   clientToUpdate={
+    code_client:'',
+    cin:'',
+    Matricule_cnrps:'',
+    nom:'',
+    prenom:'',
+    email:'',
+    tel:'',
+    fix:'',
+    mat:'',
+    structure:'',
+    ministere:''
+    }
 
   constructor(private clientService: ClientService, private router: Router) {
   }
@@ -60,6 +73,9 @@ export class ListClientsComponent implements OnInit {
       );
   }
 
+  updateClient(idC:number){
+    this.router.navigate(['update-client',idC])
+  }
 
   Search() {
     if (this.nom == '') {

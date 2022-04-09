@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ClientDetailsComponent } from './client-details/client-details.component';
 import { AddComponent } from './client/add/add.component';
+import { ClientDetailsComponent } from './client/client-details/client-details.component';
 import { ListClientsComponent } from './client/list-clients/list-clients.component';
+import { UpdateClientComponent } from './client/update-client/update-client.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './guard/auth.guard';
@@ -22,6 +23,8 @@ const routes: Routes = [
   {path:'listclients',component:ListClientsComponent,canActivate:[AuthGuard],data:{roles:['User']}},
   {path:'add',component:AddComponent,canActivate:[AuthGuard],data:{roles:['User']}},
   {path:'client/:idC',component:ClientDetailsComponent},
+  {path:'update-client/:idC',component:UpdateClientComponent},
+
 
 ];
 

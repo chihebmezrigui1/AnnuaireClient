@@ -35,6 +35,7 @@ export class AddComponent implements OnInit {
       email:['',[Validators.required,Validators.pattern(PAT_EMAIL)]],
       tel:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
       fix:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+      mat:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
       structure:[''],
       ministere:['',Validators.required]
     });
