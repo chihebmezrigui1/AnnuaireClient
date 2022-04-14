@@ -1,3 +1,26 @@
-image{
-    background: url("src/assets/img/clientimage.jpg");
-}
+button{
+    height: 80%;
+    width: 10%;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #067BBF, #067BBF);
+  }
+  button:hover{
+    height: 80%;
+    width: 10%;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #0572a9, #0572a9);
+  }

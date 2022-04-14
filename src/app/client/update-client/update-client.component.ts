@@ -25,7 +25,8 @@ export class UpdateClientComponent implements OnInit {
     ministere:''
     }
     idC:number;
-    client: Client = new Client();
+    client: Client
+    
 
   selectedValue = null;
   addForm: FormGroup;
@@ -35,25 +36,52 @@ export class UpdateClientComponent implements OnInit {
   ,"Ministère de la Jeunesse et des Sports","Ministère des Technologies de la Communication","Ministère des Transports","Ministère de l'Environnement","Ministère du tourisme",
   "Ministère de l'Emploi et de la Formation professionnelle"];
 
-  constructor(private clientService:ClientService ,private route :ActivatedRoute,private router:Router) { }
+  constructor(private clientService:ClientService ,private route :ActivatedRoute,private router:Router,private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+
+    const PAT_NAME = "^[a-zA-Z ]{3,20}$";
+    const PAT_EMAIL = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,4}$";
+
+    this.addForm = this.formBuilder.group({
+      code_client:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+      Matricule_cnrps:['',[Validators.required, Validators.pattern("^[4]+[0]+[0-9]{8}$")]],
+      cin:['', [Validators.required, Validators.pattern("^[0-9]{8}$")]],
+      nom:['',[Validators.required, Validators.pattern(PAT_NAME)]],
+      prenom:['',[Validators.required, Validators.pattern(PAT_NAME)]],
+      email:['',[Validators.required,Validators.pattern(PAT_EMAIL)]],
+      tel:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+      fix:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+      mat:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+      structure:[''],
+      ministere:['',Validators.required]
+    });
+
+    this.client = new Client();
     this.idC = this.route.snapshot.params['idC'];
-    this.clientService.getClientById(this.idC).subscribe(data => {
-      this.client = data;
-    }, error => console.log(error));
+    this.clientService.getClientById(this.idC)
+      .subscribe(data => {
+        console.log(data)
+        this.client = data;
+      }, error => console.log(error));
   }
 
- 
-  onSubmit(){
-    this.clientService.updateClient(this.idC, this.client).subscribe( data =>{
-      this.goToEmployeeList();
-    }
-    , error => console.log(error));
-  }
 
-  goToEmployeeList(){
+  gotoList() {
     this.router.navigate(['/listClients']);
   }
+ 
+  updateClient(addForm:FormGroup) {
+    this.clientService.updateClient(this.idC,this.client)
+      .subscribe(data => {
+        console.log(data);
+        this.client = new Client();
+        this.gotoList();
+      }, error => console.log(error));
+  }
+
+  
+  
+  
 }
 

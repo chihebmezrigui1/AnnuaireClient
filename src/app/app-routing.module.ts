@@ -24,6 +24,8 @@ const routes: Routes = [
   {path:'add',component:AddComponent,canActivate:[AuthGuard],data:{roles:['User']}},
   {path:'client/:idC',component:ClientDetailsComponent},
   {path:'update-client/:idC',component:UpdateClientComponent},
+  { path: 'details/:idC', component: ClientDetailsComponent },
+
 
 
 ];

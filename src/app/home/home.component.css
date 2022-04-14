@@ -7,7 +7,7 @@
     max-width: 1200px;
     margin: auto;
     padding: 40px;
-    color: #067BBF;
+    color: #0572a9;
     overflow: hidden;
   }
   .team-section h1{
@@ -37,7 +37,7 @@
   }
   .p-des{
     font-style: italic;
-    color: #067BBF;
+    color: #0572a9;
   }
   .p-sm{
     margin-top: 12px;
@@ -83,7 +83,7 @@
   }
   .section-title{
     text-align: center;
-    color: #067BBF;
+    color: #0572a9;
     text-transform: uppercase;
     font-size: 30px;
   }
@@ -127,7 +127,7 @@
   }
   .service-box:hover .service-icon{
     background: #e0d74d;
-    color: #067BBF;
+    color: #0572a9;
   }
   .service-title{
     font-size: 18px;

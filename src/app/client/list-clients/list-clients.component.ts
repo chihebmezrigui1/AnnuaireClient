@@ -15,49 +15,55 @@ export class ListClientsComponent implements OnInit {
     , "Ministère de la Jeunesse et des Sports", "Ministère des Technologies de la Communication", "Ministère des Transports", "Ministère de l'Environnement", "Ministère du tourisme",
     "Ministère de l'Emploi et de la Formation professionnelle"];
 
-  clients: Client[] ;
-
-
-  nom: any;
+  clients: Client[];
+  nomS: any;
+  prenomS:any;
+  structureS:any;
   page: number = 1;
-  key: string = 'nom';
-  reserve: boolean = false;
-   clientToUpdate={
-    code_client:'',
-    cin:'',
-    Matricule_cnrps:'',
-    nom:'',
-    prenom:'',
-    email:'',
-    tel:'',
-    fix:'',
-    mat:'',
-    structure:'',
-    ministere:''
-    }
+  keywordNom='nom';
+  keywordPrenom='prenom';
+  data:any;
+  keyword='nom';
+  clientsCopy=[]
+  clientsFilter=[]
+  selected:string
+  select:any
 
   constructor(private clientService: ClientService, private router: Router) {
   }
 
 
   ngOnInit(): void {
-    return this.getClients();
+   return  this.getClients();
+
+  }
+
+  onSelect() {
+    this.clientsCopy = this.clients.filter((x) => (x.structure.ministere.libelle ) == this.selected );
+        console.log(this.selected);
+        console.log(this.clientsCopy);
+  }
+
+  removeFilter() {
+    this.selected = '';
+    this.clientsCopy = [...this.clients];
   }
 
 
 
   getClients() {
     this.clientService.getClients().subscribe((res) => {
-      this.clients = res;
+      this.clients=res;
+      console.log(res);    
     })
   }
 
-  getClientByIdC(idC:number):Client{
-    clients:this.getClients()
-    return this.clients.find(client=>client.idC==idC)
+
+  getClientByIdC(idC: number): Client {
+    clients: this.getClients()
+    return this.clients.find(client => client.idC == idC)
 
   }
-
   deleteClient(client: any) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
@@ -73,22 +79,16 @@ export class ListClientsComponent implements OnInit {
       );
   }
 
-  updateClient(idC:number){
-    this.router.navigate(['update-client',idC])
+  clientDetails(idC: number) {
+    this.router.navigate(['details', idC]);
   }
 
-  Search() {
-    if (this.nom == '') {
-      this.ngOnInit()
-    } else {
-      this.clients = this.clients.filter(res => {
-        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase())
-      })
-    }
+  edit(idC: number) {
+    this.router.navigate(['update-client', idC]);
   }
-  sort(key: any) {
-    this.key = key;
-    this.reserve = !this.reserve
+
+  rech(){
+    return this.getClients();
   }
 
   toAdd() {

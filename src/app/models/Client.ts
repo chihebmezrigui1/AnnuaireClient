@@ -11,5 +11,5 @@ export class Client {
     tel:number;
     fix:number;
     mat:number;
-    structure:Structure[];
+    structure:Structure;
 }

@@ -19,6 +19,9 @@ import { AuthInterceptor } from './guard/auth.interceptor';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ClientDetailsComponent } from './client/client-details/client-details.component';
 import { UpdateClientComponent } from './client/update-client/update-client.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,8 @@ import { UpdateClientComponent } from './client/update-client/update-client.comp
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
+    AutocompleteLibModule,
+    NgSelectModule
   ],
   providers: [
     UserAuthService,

@@ -1,1 +1,43 @@
 <app-navbar></app-navbar>
+<body style="margin-left: 100px; margin-top: 80px;">
+<h2>Details du Client</h2> 
+
+<hr/>
+<div *ngIf="client">
+  <div>
+      <div>
+        <label><b>Nom: </b>{{client.nom}}</label> 
+      </div>
+      <div>
+        <label><b>Prénom: </b>{{client.prenom}}</label> 
+      </div>
+      <div>
+        <label><b>Code: </b>{{client.code_client}}</label> 
+      </div>
+      <div>
+        <label><b>Cin: </b>{{client.cin}}</label> 
+      </div>
+      <div>
+        <label><b>Matricule Cnrps: </b>{{client.mat}}</label> 
+      </div>
+      <div>
+        <label><b>Adresse Email : </b>{{client.email}}</label> 
+      </div>
+      <div>
+        <label><b>Numéro de teléphone : </b>{{client.tel}}</label> 
+      </div>
+      <div>
+        <label><b>Numéro Fix : </b>{{client.fix}}</label> 
+      </div>
+      <div>
+        <label><b>Ministere : </b>{{client.structure.ministere.libelle}}</label> 
+      </div>
+      <div>
+        <label><b>Structure : </b>{{client.structure.libelle}}</label> 
+      </div>
+  </div>
+  
+</div>
+<br>
+<button (click)="list()" class="btn btn-primary">Retour</button><br>
+</body>

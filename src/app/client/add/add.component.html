@@ -5,12 +5,11 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="add.component.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 </head>
 
 <body>
-  <div class="container">
-   <div class="title">Details du client</div>
+  <div style="margin-top: 20px;" class="container">
+   <div class="title">Ajout du client</div>
     <div class="content">
       <form [formGroup]="addForm" (ngSubmit)="AddClient(addForm)">
         <div class="user-details">
@@ -27,9 +26,9 @@
             </div>
           </div>
           <div class="input-box">
-            <span class="details">Mat *</span>
+            <span class="details">Matricule CNRPS *</span>
             <input type="number" formControlName="mat" #mat (ngModel)="mat" class="form-control"
-              placeholder="mat"
+              placeholder="matricule Cnrps"
               [ngClass]="{ 'is-invalid': (submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid)">

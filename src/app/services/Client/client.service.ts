@@ -41,12 +41,12 @@ export class ClientService {
     return this.httpClient.get<Client>(`${this.API1}/${idC}`);
   }
   
-  updateClient(idC: number, ClientData:any): Observable<Object>{
+  updateClient(idC: number,ClientData:any): Observable<Object> {
     this.structure.libelle = ClientData.structure;
     this.structure.ministere.libelle = ClientData.ministere;
     delete ClientData.structure
     delete ClientData.ministere
-    ClientData = { ...ClientData, structure: this.structure}
-    return this.httpClient.put(`${this.API2}/${idC}`, ClientData);
+    ClientData = { ...ClientData, structure: this.structure }
+    return this.httpClient.put(`${this.API2}/${idC}`,ClientData);
   }
 }

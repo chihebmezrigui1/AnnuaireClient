@@ -1,9 +1,33 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
   body {
-    color: #067BBF;
+    color: #0572a9;
     background: #fff;
     font-family: 'Varela Round', sans-serif;
     font-size: 13px;
+  }
+  .filterField{
+    position: relative;
+    display: flex;
+    align-items: center; /* Not necessary but will center the items */
+    flex-direction: row; /* Not necessary but tells that they should be in a row */
+    justify-content: flex-start; /* Will align items to left on larger screens */
+    flex-wrap: wrap; /* Will allow the flex inputs to wrap on smaller screens */
+    margin-top: 50px;
+    
+  }
+  .rech{
+   width: 200px;
+   margin-top: 50px;
+   text-align: center;
+   margin-left: 250px;
+  }
+  .table-wrapper1  {
+    min-width: 500px;
+    background: #fafbfb;
+    padding: 20px 25px 5px 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
   }
   
   .table-responsive {
@@ -19,7 +43,7 @@
   .table-title {
   
     padding-bottom: 15px;
-    background: #067BBF;
+    background: #0572a9;
     color: #fff;
     padding: 16px 30px;
     margin: -20px -25px 10px;
@@ -43,7 +67,7 @@
     font-size: 24px;
   }
   .table-title .btn {
-    color: #067BBF;
+    color: #0572a9;
     float: right;
     font-size: 13px;
     background: #fff;
@@ -57,7 +81,7 @@
   
   
   .table-title .btn:hover, .table-title .btn:focus {
-    color: #067BBF;
+    color: #0572a9;
     background: #f2f2f2;
   }
   .table-title .btn i {
@@ -70,7 +94,7 @@
     margin-top: 2px;
   }
   table.table tr th, table.table tr td {
-    border-color: #067BBF;
+    border-color: #0572a9;
     padding: 12px 15px;
     vertical-align: middle;
   }
@@ -98,16 +122,19 @@
   }
   table.table td a {
     font-weight: bold;
-    color: #067BBF;
+    color: #0572a9;
     display: inline-block;
     text-decoration: none;
   }
   table.table td a:hover {
-    color: #067BBF;
+    color: #0572a9;
   }
   table.table td a.view {
     margin-left: -14px;
-    color: #067BBF;
+    color: #0572a9;
+  }
+  table.table td a.view:hover {
+    cursor: pointer;
   }
   table.table td a.edit {
     margin-left: -8px;

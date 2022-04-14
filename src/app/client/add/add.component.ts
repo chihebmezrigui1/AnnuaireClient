@@ -16,7 +16,6 @@ export class AddComponent implements OnInit {
   "Ministère de l'Emploi et de la Formation professionnelle"];
 
 
-  selectedValue = null;
   addForm: FormGroup;
   submitted = false;
 
@@ -44,10 +43,9 @@ export class AddComponent implements OnInit {
   AddClient(addForm: FormGroup) {
     console.log(addForm.controls);
     this.clientService.AddClients(addForm.value).subscribe();
+    setTimeout('1000');
+    addForm.reset();
     this.router.navigate(['/clients']);
-
-
   }
-
 
 }

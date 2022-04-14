@@ -16,7 +16,7 @@ body{
   
   .img-left{
     width: 45%;
-    background: url("src/assets/img/bg.png") center;
+    background: url("src/assets/img/aaa.jpg") center;
     background-size: cover;
   }
   
@@ -62,15 +62,15 @@ body{
   }
   
   .form-input input:focus, .form-input input:valid{
-    border: 2px solid #4c6497;
+    border: 2px solid #0572a9;
   }
   
   .form-input input:focus::placeholder{
-    color: #4c6497;
+    color: #0572a9;
   }
   
   .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
-    background-color: #4c6497 !important;
+    background-color: #0572a9 !important;
     border: 0px;
   }
   
@@ -79,7 +79,7 @@ body{
     border: none;
     cursor: pointer;
     border-radius: 50px;
-    background: #4c6497;
+    background: #0572a9;
     color: #fff;
     font-size: 100%;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
