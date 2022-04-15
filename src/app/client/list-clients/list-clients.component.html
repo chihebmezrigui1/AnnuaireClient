@@ -12,140 +12,75 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<app-navbar></app-navbar>
 
 <body>
 
-  <label style="margin-left: 500px;margin-top: 60px;font-size:xx-large;" for="">Recherche des Clients</label>
-
-  <div class="filterField">
-    <div style="width: 250px;margin-left: 400px;">
-      <label for="exampleDataList" class="form-label">Ministere</label>
-      <input #ministere [(ngModel)]="selected" id="ministere" name="ministere" class="form-control"
-        list="datalistOptions" id="ministere" placeholder="Ministere du client...">
-      <datalist id="datalistOptions">
-        <option value='' disabled>Select </option>
-        <option *ngFor="let c of clients" [value]="c.structure.ministere.libelle">
-          {{c.structure.ministere.libelle}}
-        </option>
-      </datalist>
-    </div>
-    <div style="width: 250px;margin-left: 20px;">
-      <label for="structure" class="form-label">Structure</label>
-      <input [(ngModel)]="structureS" name="structure" class="form-control" list="datalistOptions"
-        placeholder="Structure du client...">
-      <datalist id="str">
-        <option *ngFor="let c of clients" [value]="c.structure.libelle">
-          {{c.structure.libelle}}
-        </option>
-      </datalist>
-    </div>
-    <div style="width: 250px;margin-left: 400px;margin-top: 20px;">
-      <label for="exampleDataList" class="form-label">Nom</label>
-      <input [(ngModel)]="nomS" id="nom" name="nom" class="form-control" list="datalistOptions" id="nom"
-        placeholder="Nom du client...">
-
-    </div>
-    <datalist id="nom">
-      <option *ngFor="let c of clients" [value]="c.nom">
-        {{c.nom}}
-      </option>
-    </datalist>
-    <div style="width: 250px;margin-left: 20px;margin-top: 20px;">
-      <label for="exampleDataList" class="form-label">Prénom</label>
-      <input [(ngModel)]="prenomS" id="prenom" name="prenom" class="form-control" list="datalistOptions" id="prenom"
-        placeholder="Prenom du client...">
-      <datalist id="datalistOptions">
-        <option *ngFor="let c of clients" [value]="c.tel">
-          {{c.tel}}
-        </option>
-      </datalist>
-    </div>
-
-    <a (click)="onSelect()" style="margin-left: 70px;margin-top: 37px;width: 130px;height: 35px;"
-      class="btn btn-primary"><span>Rechercher
-      </span></a>
-    <a (click)="removeFilter()"
-      style="margin-left: 10px;margin-bottom: -37px;background-color: #bdb213b7;border-color: #bdb213b7;"
-      class="btn btn-primary"><span>Reset
-      </span></a>
+  <div class="buttonAnnuler">
+    <a style="margin-top: -95px;margin-left: 1010px; background-color: gray;border-color: gray; width: 110px;"
+      (click)="removeFilter()" class="btn btn-primary"><i class="fas fa-times"></i>
+      <span style="margin-left: 5px;">Annuler</span></a>
   </div>
 
-
-
-
-
-  <!-- <div  class="rech">
-    <label for="exampleDataList" class="form-label"><b>Ministere</b></label>
-    <input  class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ministere..." (change)="nomValue($any($event.target).value)">
-    <datalist id="datalistOptions">
-      <option *ngFor="let post of posts" [value]="post.structure.ministere.libelle">
-    </datalist>
-   </div> -->
-
-  <div style="margin-top: -10px;" class="container">
-    <div class="table-responsive">
-      <div class="table-wrapper">
-        <div class="table-title">
-          <div class="row">
-            <div class="col-xs-5">
-              <h2>Gestion <b>des Clients</b></h2>
-            </div>
-            <div class="col-xs-7">
-              <a (click)="toAdd()" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Creer Nouveau
-                  Client</span></a>
-              <a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Rechercher
-                </span></a>
-            </div>
+  <div style="margin-top: -10px;" class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-xs-5">
+            <h2>Gestion <b>des Clients</b></h2>
+          </div>
+          <div class="col-xs-7">
+            <a (click)="toAdd()" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Creer Nouveau
+                Client</span></a>
           </div>
         </div>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Code Client</th>
-              <th>Matricule CNRPS</th>
-              <th>Cin</th>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Addresse Email</th>
-              <th>Numéro Téléphone</th>
-              <th>Numéro Fix</th>
-              <th>Ministere</th>
-              <th>Structure</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <tr *ngFor="let client of clientsCopy| paginate:{itemsPerPage:5,currentPage:page};">
-              <td>{{client.code_client}}</td>
-              <td>{{client.mat}}</td>
-              <td>{{client.cin}}</td>
-              <td>{{client.nom}}</td>
-              <td>{{client.prenom}}</td>
-              <td>{{client.email}}</td>
-              <td>{{client.tel}}</td>
-              <td>{{client.fix}}</td>
-              <td>{{client.structure.ministere.libelle}}</td>
-              <td>{{client.structure.libelle}}</td>
-              <td>
-                <a (click)="clientDetails(client.idC)" class="view" title="Consulter" data-toggle="tooltip"><i
-                    class="material-icons">&#xE417;</i></a>
-                <a (click)="edit(client.idC)" class="edit" title="Modifier" data-toggle="tooltip"><i
-                    class="material-icons">&#xE254;</i></a>
-                <a (click)="deleteClient(client)" class="delete" title="Supprimer" data-toggle="tooltip"><i
-                    class="material-icons">&#xE872;</i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="clearfix">
-          <div class="hint-text">Page numéro <b>{{page}}</b></div>
-          <pagination-controls class="pagination" (pageChange)="page=$event"></pagination-controls>
-        </div>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Code Client</th>
+            <th>Matricule CNRPS</th>
+            <th>Cin</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Addresse Email</th>
+            <th>Numéro Téléphone</th>
+            <th>Numéro Fix</th>
+            <th>Ministere</th>
+            <th>Structure</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <tr *ngFor="let client of filteredClients| paginate:{itemsPerPage:5,currentPage:page};"
+          [ngClass]="[client % 2 == 1 ? 'odd-row' : 'even-row']">
+            <td>{{client.code_client}}</td>
+            <td>{{client.mat}}</td>
+            <td>{{client.cin}}</td>
+            <td>{{client.nom}}</td>
+            <td>{{client.prenom}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.tel}}</td>
+            <td>{{client.fix}}</td>
+            <td>{{client.structure.ministere.libelle}}</td>
+            <td>{{client.structure.libelle}}</td>
+            <td>
+              <a (click)="clientDetails(client.idC)" class="view" title="Consulter" data-toggle="tooltip"><i
+                  class="material-icons">&#xE417;</i></a>
+              <a (click)="edit(client.idC)" class="edit" title="Modifier" data-toggle="tooltip"><i
+                  class="material-icons">&#xE254;</i></a>
+              <a (click)="deleteClient(client)" class="delete" title="Supprimer" data-toggle="tooltip"><i
+                  class="material-icons">&#xE872;</i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table> 
+      <div class="clearfix">
+        <div class="hint-text">Page numéro <b>{{page}}</b></div>
+        <pagination-controls class="pagination" (pageChange)="page=$event"  nextLabel="Suivant" previousLabel="Précédent"></pagination-controls>
       </div>
     </div>
   </div>
 </body>
-
 </html>

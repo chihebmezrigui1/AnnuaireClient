@@ -1,0 +1,19 @@
+<form novalidate [formGroup]="form">
+
+    <h2 style="color: gray;">Recherche du Client</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" formControlName="nom" class="form-control" placeholder="nom..." #searchText />
+        </div>
+        <div class="col-md-3">
+            <input type="text" formControlName="prenom" class="form-control" placeholder="prenom" #searchText />
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3">
+        <a style="margin-left: 830px;margin-top: -56px;width: 110px;" class="btn btn-primary" (click)="search(form.value)">
+            <i class="fas fa-search"></i><span style="margin-left: 5px;">Recherche</span>
+        </a>
+    </div>
+</form>
+<br />

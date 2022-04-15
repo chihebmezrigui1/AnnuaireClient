@@ -1,0 +1,58 @@
+<h1>Gestion</h1>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<div>
+  <span> Nom</span> <input type="text" [(ngModel)]="nom"/>
+    <span> Prenom</span> <input type="text" [(ngModel)]="prenom"/>
+    <span>Email</span> <input type="text" [(ngModel)]="email"/>
+   
+</div>
+
+  <div>
+    <input type="button" (click)='search()' value="search"/>
+    </div>
+<table>
+    <thead>
+      <tr class="cursorPointer">
+        <th scope="col">
+          <label>
+              <span class='float-left'>Nom</span>
+          </label>
+        </th>
+        <th scope="col">
+          <label>
+              <span class='float-left'>prenom</span>
+          </label>
+        </th>
+        <th scope="col">
+          <label>
+              <span class='float-left'>Email</span>
+          </label>
+        </th>
+        <th scope="col">
+            <label>
+                <span class='float-left'>Structure</span>
+            </label>
+          </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let affiliation of clients | searchAllColumn : searchParams"
+       [ngClass]="[affiliation % 2 == 1 ? 'odd-row' : 'even-row']">
+
+        <!--  shown checkbox for affiliations -->
+        <td>
+          {{affiliation.nom}}
+        </td>
+        <td>
+          {{affiliation.prenom}}
+        </td>
+        <td>
+          {{affiliation.email}}
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>

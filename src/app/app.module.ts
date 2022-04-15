@@ -21,6 +21,13 @@ import { ClientDetailsComponent } from './client/client-details/client-details.c
 import { UpdateClientComponent } from './client/update-client/update-client.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FilterPipe } from './pipe/filter.pipe';
+import { ClientComponent } from './client/client/client.component';
+import { SearchComponent } from './client/search/search.component';
+import { ContactComponent } from './contact/contact.component';
+import { SearchAllColumnPipe } from './pipe/search-all-column.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +41,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     NavbarComponent,
     ClientDetailsComponent,
-    UpdateClientComponent
+    UpdateClientComponent,
+    FilterPipe,
+    ClientComponent,
+    SearchComponent,
+    ContactComponent,
+    SearchAllColumnPipe,
+        
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +59,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     RouterModule,
     NgxPaginationModule,
     AutocompleteLibModule,
-    NgSelectModule
+    NgSelectModule,
+
   ],
   providers: [
     UserAuthService,

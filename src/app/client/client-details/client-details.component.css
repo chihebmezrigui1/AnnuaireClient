@@ -1,5 +1,9 @@
+body{
+  font-weight: 200;
+}
+
 button{
-    height: 80%;
+    height: 5%;
     width: 10%;
     border-radius: 15px;
     border: none;
@@ -12,7 +16,7 @@ button{
     background: linear-gradient(135deg, #067BBF, #067BBF);
   }
   button:hover{
-    height: 80%;
+    height: 5%;
     width: 10%;
     border-radius: 15px;
     border: none;

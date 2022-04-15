@@ -30,5 +30,6 @@ export class ClientDetailsComponent implements OnInit {
   list(){
     this.router.navigate(['listclients']);
   }
+  
 
 }

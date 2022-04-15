@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/models/Client';
 import { ClientService } from 'src/app/services/Client/client.service';
@@ -10,52 +11,55 @@ import { ClientService } from 'src/app/services/Client/client.service';
 })
 export class ListClientsComponent implements OnInit {
 
-  ministeres = ["Ministère de l'intérieur", "Ministère des finances", "Ministère de l’Industrie, des Mines et de l’Energie", "Ministère du Commerce et du Développement des Exportations"
+  public ministeres = ["Ministère de l'intérieur", "Ministère des finances", "Ministère de l’Industrie, des Mines et de l’Energie", "Ministère du Commerce et du Développement des Exportations"
     , "Ministère de la santé", "Ministère de l’Agriculture, des Ressources Hydrauliques et de la Pêche Maritime", "Ministère de l'éducation", "Ministère de l'enseignement supérieur et de la recherche scientifique"
     , "Ministère de la Jeunesse et des Sports", "Ministère des Technologies de la Communication", "Ministère des Transports", "Ministère de l'Environnement", "Ministère du tourisme",
     "Ministère de l'Emploi et de la Formation professionnelle"];
 
+  @Input() groupFilters: Object;
+  @Input() searchByKeyword: string;
   clients: Client[];
-  nomS: any;
-  prenomS:any;
-  structureS:any;
   page: number = 1;
-  keywordNom='nom';
-  keywordPrenom='prenom';
-  data:any;
-  keyword='nom';
-  clientsCopy=[]
-  clientsFilter=[]
-  selected:string
-  select:any
+  nom:string;
+  form: FormGroup;
+  prenom:string
+  filteredClients: any[] = [];
 
-  constructor(private clientService: ClientService, private router: Router) {
+  constructor(private clientService: ClientService, private router: Router,private ref: ChangeDetectorRef,private fb:FormBuilder) {
   }
 
 
   ngOnInit(): void {
-   return  this.getClients();
-
+    this.getClients();
   }
 
-  onSelect() {
-    this.clientsCopy = this.clients.filter((x) => (x.structure.ministere.libelle ) == this.selected );
-        console.log(this.selected);
-        console.log(this.clientsCopy);
+  ngOnChanges(): void {
+    if (this.groupFilters) this.filterClientList(this.groupFilters, this.clients);
+  }
+  filterClientList(filters: any, clients: any): void {
+    this.filteredClients = this.clients;     //Reset Client List
+    const keys = Object.keys(filters);
+    const filterClient = client => keys.every(key => client[key] === filters[key]);
+    this.filteredClients = this.clients.filter(filterClient);
+    this.ref.detectChanges();
+  }
+  
+  loadUsers(): void {
+    this.clientService.getClients().subscribe(clients => this.clients = clients);
   }
 
-  removeFilter() {
-    this.selected = '';
-    this.clientsCopy = [...this.clients];
+  public removeFilter() {
+    this.filteredClients = [...this.clients];
   }
 
 
-
+     // Crud ------------------------------------
   getClients() {
     this.clientService.getClients().subscribe((res) => {
       this.clients=res;
       console.log(res);    
     })
+    this.filteredClients = this.filteredClients.length > 0 ? this.filteredClients : this.clients;                
   }
 
 
@@ -64,7 +68,7 @@ export class ListClientsComponent implements OnInit {
     return this.clients.find(client => client.idC == idC)
 
   }
-  deleteClient(client: any) {
+  public deleteClient(client: any) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf)
 
@@ -77,6 +81,10 @@ export class ListClientsComponent implements OnInit {
           console.log(err);
         }
       );
+      this.router.navigate(['/clients'])
+  .then(() => {
+    window.location.reload();
+  });
   }
 
   clientDetails(idC: number) {
@@ -86,12 +94,9 @@ export class ListClientsComponent implements OnInit {
   edit(idC: number) {
     this.router.navigate(['update-client', idC]);
   }
-
-  rech(){
-    return this.getClients();
-  }
-
   toAdd() {
     this.router.navigate(['/add']);
   }
+
+  //-----------------------------------------------------------------------
 }

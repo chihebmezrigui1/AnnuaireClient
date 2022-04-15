@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Client } from 'src/app/models/Client';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 
 interface Structure {
@@ -20,7 +20,9 @@ export class ClientService {
   API = 'http://localhost:9090/client'
   API1='http://localhost:9090/client/findClient'
   API2='http://localhost:9090/client/updateClient'
-
+  
+  setGroupFilter$ = new Subject<any>();
+  getGroupFilter = this.setGroupFilter$.asObservable();
 
   public AddClients(ClientData:any) {
     this.structure.libelle = ClientData.structure;

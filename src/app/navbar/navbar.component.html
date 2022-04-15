@@ -18,7 +18,7 @@
           <a *ngIf="userService.roleMatch(['User'])" routerLink="/home"><i></i>Acceuil</a>
           <a *ngIf="userService.roleMatch(['User'])" routerLink="/about"><i></i>A Propos</a>
           <a *ngIf="userService.roleMatch(['Admin'])"><i></i> Parametres</a>
-          <a *ngIf="userService.roleMatch(['User'])" routerLink="/listclients"><i></i>Clients</a>
+          <a *ngIf="userService.roleMatch(['User'])" routerLink="/gestionclients"><i></i>Clients</a>
           <a *ngIf="userService.roleMatch(['User'])" href="#"><i></i>Contacts</a>
           <a *ngIf="!isLoggedIn()" routerLink="/login"><i></i>Login</a>
           <a *ngIf="isLoggedIn()" routerLink="/login" (click)="logout()"><i></i>Se Déconnecter</a>
