@@ -20,10 +20,11 @@ export class ListClientsComponent implements OnInit {
   @Input() searchByKeyword: string;
   clients: Client[];
   page: number = 1;
-  nom:string;
+  nom:any;
   form: FormGroup;
   prenom:string
   filteredClients: any[] = [];
+  keyword = 'email';
 
   constructor(private clientService: ClientService, private router: Router,private ref: ChangeDetectorRef,private fb:FormBuilder) {
   }
@@ -31,6 +32,17 @@ export class ListClientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClients();
+  }
+
+  searchBy(){
+    if(this.nom ==""){
+      return this.ngOnInit
+    }else{
+      this.clients=this.clients.filter(res=>{
+        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+      });
+    }
+
   }
 
   ngOnChanges(): void {
@@ -43,10 +55,7 @@ export class ListClientsComponent implements OnInit {
     this.filteredClients = this.clients.filter(filterClient);
     this.ref.detectChanges();
   }
-  
-  loadUsers(): void {
-    this.clientService.getClients().subscribe(clients => this.clients = clients);
-  }
+
 
   public removeFilter() {
     this.filteredClients = [...this.clients];
@@ -81,7 +90,7 @@ export class ListClientsComponent implements OnInit {
           console.log(err);
         }
       );
-      this.router.navigate(['/clients'])
+      this.router.navigate(['/gestionclients'])
   .then(() => {
     window.location.reload();
   });
@@ -97,6 +106,26 @@ export class ListClientsComponent implements OnInit {
   toAdd() {
     this.router.navigate(['/add']);
   }
+
+  key='code_client';
+  reverse:boolean=false;
+  sort(key){
+    this.key=key;
+    this.reverse=!this.reverse
+
+  }
+  // selectEvent(item) {
+  //   // do something with selected item
+  // }
+
+  // onChangeSearch(val: string) {
+  //   // fetch remote data from here
+  //   // And reassign the 'data' which is binded to 'data' property.
+  // }
+  
+  // onFocused(e){
+  //   // do something when input is focused
+  // }
 
   //-----------------------------------------------------------------------
 }

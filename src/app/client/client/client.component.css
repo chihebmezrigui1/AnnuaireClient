@@ -1,0 +1,20 @@
+.light {
+      --mainColor: #0572a9;
+      --hoverColor: #5bacdf;
+      --backgroundColor: #f1f8fc;
+      --darkOne: #312f3a;
+      --darkTwo: #45424b;
+      --lightOne: #919191;
+      --lightTwo: #aaa;
+    }
+    .big-wrapper {
+      position: relative;
+      padding: 1.7rem 0 2rem;
+      width: 100%;
+      min-height: 127vh;
+      overflow: hidden;
+      background-color: var(--backgroundColor);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }    

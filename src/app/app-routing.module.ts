@@ -14,11 +14,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+
+
 const routes: Routes = [
-  {path:'',pathMatch:'full',redirectTo:'/login'},
+  {path:'',pathMatch:'full',redirectTo:'/home'},
   {path:'to',component:AppComponent},
   {path:'navbar',component:NavbarComponent},
-  {path:'home',component:HomeComponent ,canActivate:[AuthGuard],data:{roles:['User']}},
+  {path:'home',component:HomeComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'login',component:LoginComponent},
   {path:'forbidden',component:ForbiddenComponent},
@@ -26,8 +28,10 @@ const routes: Routes = [
   {path:'client/:idC',component:ClientDetailsComponent},
   {path:'update-client/:idC',component:UpdateClientComponent},
   {path: 'details/:idC', component: ClientDetailsComponent },
-  {path:'gestionclients',component:ClientComponent,canActivate:[AuthGuard],data:{roles:['User']}},
-  {path:'contact',component:ContactComponent}
+  {path:'gestionclients',component:ClientComponent},
+  {path:'contact',component:ContactComponent},
+  {path:'listClients',component:ListClientsComponent},
+
 
 ];
 

@@ -1,10 +1,13 @@
-@import "~@ng-select/ng-select/themes/default.theme.css";
 
+  
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
   body {
     color: #0572a9;
-    background: #fff;
-    font-family: 'Varela Round', sans-serif;
+    background:transparent;
+    font-family:"Poppins", sans-serif;
+
     font-size: 13px;
+    
   }
   .filterField{
     position: relative;
@@ -15,48 +18,28 @@
     flex-wrap: wrap; /* Will allow the flex inputs to wrap on smaller screens */
     margin-top: 50px;
   }
- 
-
-  .rech{
-   width: 200px;
-   margin-top: 50px;
-   text-align: center;
-   margin-left: 250px;
-  }
 
   .table-responsive {
     margin: 30px 0;
   }
   .table-wrapper {
     min-width: 1000px;
-    background: #fafbfb;
-    padding: 20px 25px 5px 25px;
-    border-radius: 8px;
+    background: rgb(243, 251, 255) ;
+    padding: 0px 0px 0px 0px;
+    border-radius: 15px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     text-align: center;
   }
   .table-title {
   
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     background: #0572a9;
     color: #fff;
     padding: 16px 30px;
-    margin: -20px -25px 10px;
-    border-radius: 8px 8px 0 0;
+    border-radius: 15px 15px 0 0;
     text-align: left;
   }
-  .rech-bar {
-  
-    padding-bottom: 15px;
-    background: #f2f2f2;
-    color: #fff;
-    padding: 16px 30px;
-    margin: -20px -25px 10px;
-    border-radius: 8px 8px 8px 8px;
-    width: 100%;
-    border-style: solid;
-    margin-left: 4px;
-  }
+
   
   .table-title h2 {
     margin: 5px 0 0;
@@ -73,6 +56,20 @@
     border: none;
     outline: none !important;
     margin-left: 10px;
+  }
+  .buttonAnnuler a{
+    margin-top: -107px;
+    margin-left: 750px; 
+    background-color: gray;
+    border-color: gray;
+    width: 110px;
+  }
+  .buttonAnnuler a:hover{
+    margin-top: -107px;
+    margin-left: 750px; 
+    background-color:#5bacdf;
+    border-color: #5bacdf;
+    width: 110px;
   }
   
   
@@ -91,7 +88,7 @@
   }
   table.table tr th, table.table tr td {
     border-color: #0572a9;
-    padding: 12px 15px;
+    padding: 10px 15px;
     vertical-align: middle;
   }
   table.table tr th:first-child {

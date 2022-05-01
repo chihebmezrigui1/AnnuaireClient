@@ -12,4 +12,6 @@ export class Client {
     fix:number;
     mat:number;
     structure:Structure;
+    isDeleting: boolean = false;
+
 }

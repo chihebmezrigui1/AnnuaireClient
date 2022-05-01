@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from '../models/Client';
-import { ClientService } from '../services/Client/client.service';
-
 
 @Component({
   selector: 'app-contact',
@@ -10,31 +7,9 @@ import { ClientService } from '../services/Client/client.service';
 })
 export class ContactComponent implements OnInit {
 
-  nom='';
-  prenom='';
-  email='';
-  structure=''
-  clients:Client[]
-  searchParams={'nom':'','prenom':'','email':''}
-;
+  constructor() { }
 
-  constructor(private clientService:ClientService) { }
-
-  ngOnInit() {
-    this.getClients();
+  ngOnInit(): void {
   }
 
-  getClients() {
-    this.clientService.getClients().subscribe((res) => {
-      this.clients=res;
-      console.log(res);    
-    })
-  }
-
-  search(){
-    let filter = {'nom':  this.nom,
-    'prenom': this.prenom, 'email': this.email}
-   this.searchParams = filter;
-
-  }
 }

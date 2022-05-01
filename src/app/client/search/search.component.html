@@ -1,8 +1,7 @@
+<!-- 
 <form novalidate [formGroup]="form">
-
-    <h2 style="color: gray;">Recherche du Client</h2>
-    <hr />
-    <div class="row">
+    <div class="row" style="margin-top: 500px;">
+        <h2 style="color: gray;">Recherche du Client</h2>
         <div class="col-md-3">
             <input type="text" formControlName="nom" class="form-control" placeholder="nom..." #searchText />
         </div>
@@ -11,9 +10,48 @@
         </div>
     </div>
     <div class="col-md-3 col-sm-3">
-        <a style="margin-left: 830px;margin-top: -56px;width: 110px;" class="btn btn-primary" (click)="search(form.value)">
+        <a style="margin-left: 830px;margin-top: -56px;width: 110px;" class="btn btn-primary"
+            (click)="search(form.value)">
             <i class="fas fa-search"></i><span style="margin-left: 5px;">Recherche</span>
         </a>
     </div>
 </form>
-<br />
+<br /> -->
+<div>
+    <form novalidate [formGroup]="form">
+
+<!--      
+     <div class="input1">
+        <input type="text" formControlName="nom" class="form-control" placeholder="Nom..." #searchText />
+    </div>
+    
+    <div class="input2">
+        <input  type="text" formControlName="prenom" class="form-control" placeholder="Prénom..." #searchText />
+    </div> -->
+
+    <div class="input1">
+        <input type="text" formControlName="nom" list="nom" [(ngModel)]="nomValue" (change)="saveNom($event)" placeholder="Nom..." #searchText>
+        <datalist id="nom">
+            <option *ngFor="let c of clients" [value]="c.nom">{{c.nom}}</option>
+        </datalist>
+    </div>
+
+    <div class="input2">
+        <input type="text" formControlName="prenom" list="prenom" [(ngModel)]="prenomValue" (change)="savePrenom($event)" placeholder="Prenom..." #searchText>
+        <datalist id="prenom">
+            <option *ngFor="let c of clients" [value]="c.prenom">{{c.prenom}}</option>
+        </datalist>
+    </div>
+    <!-- <div class="input3">
+        <input type="text" formControlName="structure" list="structure" [(ngModel)]="structureValue" (change)="saveStructure($event)" placeholder="Structure..." #searchText>
+        <datalist id="structure">
+            <option *ngFor="let c of clients" [value]="c.structure.libelle">{{c.structure.libelle}}</option>
+        </datalist>
+    </div> -->
+
+        <a style="margin-left: 630px;margin-top: -65px;width: 110px;" class="btn btn-primary"
+                (click)="search(form.value)">
+                <span style="margin-left: 5px;">Recherche</span>
+            </a>
+    </form>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/models/Client';
 import { ClientService } from 'src/app/services/Client/client.service';
@@ -11,6 +11,22 @@ import { ClientService } from 'src/app/services/Client/client.service';
 })
 export class UpdateClientComponent implements OnInit {
 
+  alert:boolean=false
+  editClient=new FormGroup({
+    code_client: new FormControl(''),
+    cin:new FormControl(''),
+    Matricule_cnrps:new FormControl(''),
+    nom:new FormControl(''),
+    prenom:new FormControl(''),
+    email:new FormControl(''),
+    tel:new FormControl(''),
+    fix:new FormControl(''),
+    mat:new FormControl(''),
+    structure:new FormControl(''),
+    ministere:new FormControl('')
+  })
+
+  ///////////////////////
   public clientToUpdate={
     code_client:'',
     cin:'',
@@ -26,7 +42,7 @@ export class UpdateClientComponent implements OnInit {
     }
     idC:number;
     client: Client
-    
+
 
   selectedValue = null;
   addForm: FormGroup;
@@ -36,48 +52,72 @@ export class UpdateClientComponent implements OnInit {
   ,"Ministère de la Jeunesse et des Sports","Ministère des Technologies de la Communication","Ministère des Transports","Ministère de l'Environnement","Ministère du tourisme",
   "Ministère de l'Emploi et de la Formation professionnelle"];
 
+
+  
+
   constructor(private clientService:ClientService ,private route :ActivatedRoute,private router:Router,private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
 
-    const PAT_NAME = "^[a-zA-Z ]{3,20}$";
-    const PAT_EMAIL = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,4}$";
+    console.log(this.route.snapshot.params['idC']);
+    
+    this.clientService.getClientById(this.route.snapshot.params['idC']).subscribe((result)=>{
+      this.editClient=new FormGroup({
+        code_client: new FormControl(result['code_client']),
+        cin:new FormControl(result['cin']),
+        Matricule_cnrps:new FormControl(result['Matricule_cnrps']),
+        nom:new FormControl(result['nom']),
+        prenom:new FormControl(result['prenom']),
+        email:new FormControl(result['email']),
+        tel:new FormControl(result['tel']),
+        fix:new FormControl(result['fix']),
+        mat:new FormControl(result['mat']),
+        structure:new FormControl(result['structure']),
+        ministere:new FormControl(result['ministere'])
+      })
+    })
 
-    this.addForm = this.formBuilder.group({
-      code_client:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
-      Matricule_cnrps:['',[Validators.required, Validators.pattern("^[4]+[0]+[0-9]{8}$")]],
-      cin:['', [Validators.required, Validators.pattern("^[0-9]{8}$")]],
-      nom:['',[Validators.required, Validators.pattern(PAT_NAME)]],
-      prenom:['',[Validators.required, Validators.pattern(PAT_NAME)]],
-      email:['',[Validators.required,Validators.pattern(PAT_EMAIL)]],
-      tel:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
-      fix:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
-      mat:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
-      structure:[''],
-      ministere:['',Validators.required]
-    });
+    // const PAT_NAME = "^[a-zA-Z ]{3,20}$";
+    // const PAT_EMAIL = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,4}$";
 
-    this.client = new Client();
-    this.idC = this.route.snapshot.params['idC'];
-    this.clientService.getClientById(this.idC)
-      .subscribe(data => {
-        console.log(data)
-        this.client = data;
-      }, error => console.log(error));
+    // this.addForm = this.formBuilder.group({
+    //   code_client:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+    //   Matricule_cnrps:['',[Validators.required, Validators.pattern("^[4]+[0]+[0-9]{8}$")]],
+    //   cin:['', [Validators.required, Validators.pattern("^[0-9]{8}$")]],
+    //   nom:['',[Validators.required, Validators.pattern(PAT_NAME)]],
+    //   prenom:['',[Validators.required, Validators.pattern(PAT_NAME)]],
+    //   email:['',[Validators.required,Validators.pattern(PAT_EMAIL)]],
+    //   tel:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+    //   fix:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+    //   mat:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
+    //   structure:[''],
+    //   ministere:['',Validators.required]
+    // });
+
+    // this.client = new Client();
+    // this.idC = this.route.snapshot.params['idC'];
+    // this.clientService.getClientById(this.idC)
+    //   .subscribe(data => {
+    //     console.log(data)
+    //     this.client = data;
+    //   }, error => console.log(error));
   }
 
 
   gotoList() {
-    this.router.navigate(['/listClients']);
+    this.router.navigate(['/gestionclients']);
   }
  
-  updateClient(addForm:FormGroup) {
-    this.clientService.updateClient(this.idC,this.client)
-      .subscribe(data => {
-        console.log(data);
-        this.client = new Client();
-        this.gotoList();
-      }, error => console.log(error));
+  updateClient() {
+    this.clientService.updateClient(this.route.snapshot.params['idC'],this.editClient.value).subscribe((resultat)=>{
+      console.log(resultat,"data updated successfull");
+      this.alert=true;
+      
+    })
+  }
+  closeAlert(){
+    this.alert=false;
+    this.router.navigate(['/gestionclients'])
   }
 
   

@@ -7,7 +7,6 @@ import { AddComponent } from './client/add/add.component';
 import { ListClientsComponent } from './client/list-clients/list-clients.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
@@ -26,6 +25,10 @@ import { ClientComponent } from './client/client/client.component';
 import { SearchComponent } from './client/search/search.component';
 import { ContactComponent } from './contact/contact.component';
 import { SearchAllColumnPipe } from './pipe/search-all-column.pipe';
+import { HomeComponent } from './home/home.component';
+import { OrderModule } from 'ngx-order-pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -37,7 +40,6 @@ import { SearchAllColumnPipe } from './pipe/search-all-column.pipe';
     ListClientsComponent,
     DashboardComponent,
     ForbiddenComponent,
-    HomeComponent,
     LoginComponent,
     NavbarComponent,
     ClientDetailsComponent,
@@ -47,6 +49,7 @@ import { SearchAllColumnPipe } from './pipe/search-all-column.pipe';
     SearchComponent,
     ContactComponent,
     SearchAllColumnPipe,
+    HomeComponent,
         
 
   ],
@@ -60,6 +63,8 @@ import { SearchAllColumnPipe } from './pipe/search-all-column.pipe';
     NgxPaginationModule,
     AutocompleteLibModule,
     NgSelectModule,
+    OrderModule,
+    BrowserAnimationsModule
 
   ],
   providers: [

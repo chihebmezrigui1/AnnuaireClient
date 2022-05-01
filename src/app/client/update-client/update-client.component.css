@@ -13,7 +13,7 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: #fff
+  background: transparent
 }
 .container{
   max-width: 700px;
@@ -38,7 +38,7 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #067BBF, #067BBF);
+  background: linear-gradient(135deg, #0572a9, #0572a9);
 }
 
 
@@ -70,11 +70,11 @@ form .input-box span.details{
   background-color: transparent;
   width: 100%;
   outline: none;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 16px;
   border-radius: 15px;
   padding-left: 15px;
-  border: 1px solid #067BBF;
+  border: 2px solid #0572a9;
   border-bottom-width: 0 px;
   transition: all 0.3s ease;
 }
@@ -88,7 +88,7 @@ form .input-box span.details{
     font-weight: 350;
     border-radius: 15px;
     padding-left: 15px;
-    border: 1px solid #067BBF;
+    border: 2px solid #0572a9;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
   }
@@ -142,12 +142,12 @@ form .input-box span.details{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #067BBF, #067BBF);
+   background: linear-gradient(135deg, #0572a9, #0572a9);
  }
  form .button input:hover{
   /* transform: scale(0.99); */
   color: #e0de4f;
-  background: linear-gradient(-135deg, #067BBF, #067BBF);
+  background: linear-gradient(-135deg, #0572a9, #0572a9);
   }
  @media(max-width: 584px){
  .container{

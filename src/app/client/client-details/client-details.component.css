@@ -1,5 +1,10 @@
 body{
-  font-weight: 200;
+  font-weight: 300;
+  background-color: #f1f8fc;
+  font-family: 'Poppins',sans-serif
+}
+b{
+  font-weight: 600;
 }
 
 button{
@@ -9,7 +14,7 @@ button{
     border: none;
     color: #fff;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 300;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -22,9 +27,9 @@ button{
     border: none;
     color: #fff;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 300;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #0572a9, #0572a9);
+    background: #5bacdf;
   }

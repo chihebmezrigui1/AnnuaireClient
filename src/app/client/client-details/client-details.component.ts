@@ -28,7 +28,7 @@ export class ClientDetailsComponent implements OnInit {
       }, error => console.log(error));
   }
   list(){
-    this.router.navigate(['listclients']);
+    this.router.navigate(['gestionclients']);
   }
   
 

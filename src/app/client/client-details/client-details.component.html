@@ -1,10 +1,14 @@
 <app-navbar></app-navbar>
-<body style="margin-left: 100px; margin-top: -600px;">
-<h2>Details du Client</h2> 
+<body style="margin-left:0px; margin-top: -630px;">
 
-<hr/>
-<div *ngIf="client">
-  <div>
+<div  *ngIf="client">
+  <br>
+  <br>
+  <br>
+  <div style="margin-left: 80px;">
+    <h2>Details du Client</h2> 
+    <hr/>
+
       <div>
         <label><b>Nom: </b>{{client.nom}}</label> 
       </div>
@@ -35,9 +39,11 @@
       <div>
         <label><b>Structure : </b>{{client.structure.libelle}}</label> 
       </div>
+    <hr>
+      <button (click)="list()" class="btn btn-primary">Retour</button><br>
+
   </div>
   
 </div>
 <br>
-<button (click)="list()" class="btn btn-primary">Retour</button><br>
 </body>

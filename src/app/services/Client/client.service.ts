@@ -11,6 +11,8 @@ interface Structure {
   }
 }
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,13 +44,17 @@ export class ClientService {
   getClientById(idC: number): Observable<Client>{
     return this.httpClient.get<Client>(`${this.API1}/${idC}`);
   }
+  getCurrentClient(idC){
+    return this.httpClient.get<Client>(`${this.API}/${idC}`);
+
+  }
   
-  updateClient(idC: number,ClientData:any): Observable<Object> {
+  updateClient(idC: number,ClientData:any): Observable<Client> {
     this.structure.libelle = ClientData.structure;
     this.structure.ministere.libelle = ClientData.ministere;
     delete ClientData.structure
     delete ClientData.ministere
     ClientData = { ...ClientData, structure: this.structure }
-    return this.httpClient.put(`${this.API2}/${idC}`,ClientData);
+    return this.httpClient.put<Client>(`${this.API2}/${idC}`,ClientData);
   }
 }

@@ -16,14 +16,16 @@ export class AddComponent implements OnInit {
   "Ministère de l'Emploi et de la Formation professionnelle"];
 
 
+
+  alert:boolean=false
   addForm: FormGroup;
   submitted = false;
-
+adds:FormGroup
   constructor(private clientService: ClientService, private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit() {
     const PAT_NAME = "^[a-zA-Z ]{3,20}$";
-    const PAT_EMAIL = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,4}$";
+    const PAT_EMAIL = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,4}$"
 
     this.addForm = this.formBuilder.group({
       code_client:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
@@ -37,6 +39,7 @@ export class AddComponent implements OnInit {
       mat:['',[Validators.required, Validators.pattern("^[0-9]{8}$")]],
       structure:[''],
       ministere:['',Validators.required]
+     
     });
   }
 
@@ -45,7 +48,12 @@ export class AddComponent implements OnInit {
     this.clientService.AddClients(addForm.value).subscribe();
     setTimeout('1000');
     addForm.reset();
-    this.router.navigate(['/clients']);
+    console.log("Client bien ajouté");
+      this.alert=true;
+  }
+
+  closeAlert(){
+    this.alert=false;
   }
 
 }

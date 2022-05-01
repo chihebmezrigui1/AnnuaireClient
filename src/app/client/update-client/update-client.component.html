@@ -8,129 +8,136 @@
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 </head>
 
-<body>
-  <div style="margin-top: -1300px;" class="container">
+<body style="background-color: #f1f8fc; margin-top: -752px;">
+  <div style="margin-top: 180px;"  class="container">
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong> Modification Confimré !</strong> Client Modifié !.
+      <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <br>
+    <br>
+    <br>
    <div class="title">Details du client</div>
     <div class="content">
-      <form [formGroup]="addForm" (ngSubmit)="updateClient(addForm)">
+      <form [formGroup]="editClient" (ngSubmit)="updateClient()">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Code Client *</span>
-            <input type="number" formControlName="code_client"  #code_client (ngModel)="client.code_client" class="form-control"
-              placeholder="Code Client" 
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid) }">
+            <input type="number" formControlName="code_client"  (ngModel)="clientToUpdate.code_client" class="form-control"
+              placeholder="Code Client">
+
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid)">
               <div *ngIf="addForm.controls['code_client'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['code_client'].errors['pattern']">Code Client doit composé de 10 chiffres
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="input-box">
             <span class="details">Mat *</span>
-            <input type="number" formControlName="mat" #mat (ngModel)="client.mat" class="form-control"
-              placeholder="mat"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid) }">
+            <input type="number" formControlName="mat"  (ngModel)="clientToUpdate.mat" class="form-control"
+              placeholder="mat">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid)">
               <div *ngIf="addForm.controls['mat'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['mat'].errors['pattern']">Code Client doit composé de 10 chiffres
               </div>
-            </div>
+            </div> -->
           </div>
 
           <div class="input-box">
             <span class="details">Nom *</span>
-            <input type="text" formControlName="nom" #nom (ngModel)="client.nom" class="form-control" placeholder="Nom :"
-            [ngClass]="{ 'is-invalid': (submitted && addForm.controls['nom'].errors) || (!addForm.controls['nom'].pristine && addForm.controls['nom'].invalid) }">
-          <!-- Validation messages -->
+            <input type="text" formControlName="nom"  (ngModel)="clientToUpdate.nom" class="form-control" placeholder="Nom :">
+            <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['nom'].errors) || (!addForm.controls['nom'].pristine && addForm.controls['nom'].invalid) }">
           <div class="invalid-feedback"
             *ngIf="(submitted && addForm.controls['nom'].errors) || (!addForm.controls['nom'].pristine && addForm.controls['nom'].invalid)">
             <div *ngIf="addForm.controls['nom'].errors['required']">Champ est vide</div>
             <div *ngIf="addForm.controls['nom'].errors['pattern']">Nom avec au minumum 3 caracteres</div>
-          </div>
+          </div> -->
           </div>
 
           <div class="input-box">
             <span class="details">Prénom</span>
-            <input type="text" formControlName="prenom"  #prenom (ngModel)="client.prenom" class="form-control"
-              placeholder="Prénom :"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['prenom'].errors) || (!addForm.controls['prenom'].pristine && addForm.controls['prenom'].invalid) }">
-            <!-- Validation messages -->
+            <input type="text" formControlName="prenom"   (ngModel)="clientToUpdate.prenom" class="form-control"
+              placeholder="Prénom :">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['prenom'].errors) || (!addForm.controls['prenom'].pristine && addForm.controls['prenom'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['prenom'].errors) || (!addForm.controls['prenom'].pristine && addForm.controls['prenom'].invalid)">
               <div *ngIf="addForm.controls['prenom'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['prenom'].errors['pattern']">Prénom avec au minumum 3 caracteres</div>
-            </div>
+            </div> -->
           </div>
           <div class="input-box">
             <span class="details">Adresse Email</span>
-            <input type="text" formControlName="email"  #email (ngModel)="client.email" class="form-control"
-              placeholder="Enter email"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['email'].errors) || (!addForm.controls['email'].pristine && addForm.controls['email'].invalid) }">
-            <!-- Validation messages -->
+            <input type="text" formControlName="email"   (ngModel)="clientToUpdate.email" class="form-control"
+              placeholder="Enter email">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['email'].errors) || (!addForm.controls['email'].pristine && addForm.controls['email'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['email'].errors) || (!addForm.controls['email'].pristine && addForm.controls['email'].invalid)">
               <div *ngIf="addForm.controls['email'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['email'].errors['pattern']">Email invalide</div>
-            </div>
+            </div> -->
           </div>
           <div class="input-box">
             <span class="details">Numéro de CIN *</span>
-            <input type="number" formControlName="cin"  #cin (ngModel)="client.cin" class="form-control"
-              placeholder="Numéro de cin"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['cin'].errors) || (!addForm.controls['cin'].pristine && addForm.controls['cin'].invalid) }">
+            <input type="number" formControlName="cin"  (ngModel)="clientToUpdate.cin" class="form-control"
+              placeholder="Numéro de cin">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['cin'].errors) || (!addForm.controls['cin'].pristine && addForm.controls['cin'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['cin'].errors) || (!addForm.controls['cin'].pristine && addForm.controls['cin'].invalid)">
               <div *ngIf="addForm.controls['cin'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['cin'].errors['pattern']">Numéro de CIN doit composé de 8 chiffres</div>
-            </div>
+            </div> -->
           </div>
           <div class="input-box">
             <span class="details">Numéro de télépone *</span>
-            <input type="number" formControlName="tel" #tel (ngModel)="client.tel" class="form-control"
-              placeholder="Numéro de Téléphone"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['tel'].errors) || (!addForm.controls['tel'].pristine && addForm.controls['tel'].invalid) }">
+            <input type="number" formControlName="tel" (ngModel)="clientToUpdate.tel" class="form-control"
+              placeholder="Numéro de Téléphone">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['tel'].errors) || (!addForm.controls['tel'].pristine && addForm.controls['tel'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['tel'].errors) || (!addForm.controls['tel'].pristine && addForm.controls['tel'].invalid)">
               <div *ngIf="addForm.controls['tel'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['tel'].errors['pattern']">Numéro de téléphone doit composé de 8 chiffres
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="input-box">
             <span class="details">Numéro de Fix *</span>
-            <input type="number" formControlName="fix"  #fix (ngModel)="client.fix" class="form-control"
-              placeholder="Numéro de Fix"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['fix'].errors) || (!addForm.controls['fix'].pristine && addForm.controls['fix'].invalid) }">
+            <input type="number" formControlName="fix"  (ngModel)="clientToUpdate.fix" class="form-control"
+              placeholder="Numéro de Fix">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['fix'].errors) || (!addForm.controls['fix'].pristine && addForm.controls['fix'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['fix'].errors) || (!addForm.controls['fix'].pristine && addForm.controls['fix'].invalid)">
               <div *ngIf="addForm.controls['fix'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['fix'].errors['pattern']">Numéro de fix doit composé de 8 chiffres</div>
-            </div>
+            </div> -->
           </div>
           <div class="input-box">
             <span class="details">Ministere</span>
-            <select  name="ministere" id="ministere" formControlName="ministere" #ministere (ngModel)="client.structure.ministere.libelle">
+            <select  name="ministere" id="ministere" formControlName="ministere"  (ngModel)="clientToUpdate.ministere">
               <option>Choisir la Ministere</option>
               <option *ngFor="let m of ministeres">{{m}}</option>
             </select>
           </div>
           <div class="input-box">
             <span class="details">Structure *</span>
-            <input type="text" formControlName="structure"  #structure (ngModel)="client.structure.libelle" class="form-control"
-              placeholder="Structure :"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['structure'].errors) || (!addForm.controls['structure'].pristine && addForm.controls['structure'].invalid) }">
+            <input type="text" formControlName="structure"  (ngModel)="clientToUpdate.structure" class="form-control"
+              placeholder="Structure :">
+              <!-- [ngClass]="{ 'is-invalid': (submitted && addForm.controls['structure'].errors) || (!addForm.controls['structure'].pristine && addForm.controls['structure'].invalid) }">
             <div class="invalid-feedback"
               *ngIf="(submitted && addForm.controls['structure'].errors) || (!addForm.controls['structure'].pristine && addForm.controls['structure'].invalid)">
               <div *ngIf="addForm.controls['structure'].errors['required']">Champ vide</div>
               <div *ngIf="addForm.controls['structure'].errors['pattern']">Structure avec au minumum 3 caracteres</div>
-            </div>
+            </div> -->
           </div>
           <small style="margin-left: 20px;font-weight: 100;color: #4c6497;">Les Champs à * sont obligatoires</small>
         </div>
         <div class="button">
-          <input type="submit" value="Update">
+          <input type="submit" value="Modifier">
         </div>
       </form>
     </div>

@@ -15,8 +15,8 @@ body{
   }
   
   .img-left{
-    width: 45%;
-    background: url("src/assets/img/aaa.jpg") center;
+    width: 55%;
+    background: url("src/assets/img/login.svg") center;
     background-size: cover;
   }
   

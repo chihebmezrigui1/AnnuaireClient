@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -25,5 +25,49 @@
         </nav>
       </div>
     </header>
-  </body>
+  </body> -->
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page With Light/Dark Mode</title>
+    <link rel="stylesheet" href="navbar.component.css" />
+  </head>
+  
+  <body>
+    <main>
+      <header>
+        <div class="big-wrapper light">
+          <img src="" alt="" class="shape" />
+            <div class="container">
+              <div class="logo">
+                <img src="assets/img/logo.png" alt="Logo" />
+                <h4 routerLink="/home">Centre National de l'informatique</h4>
+              </div>
+    
+              <div class="links">
+                <ul>
+                  <li><a *ngIf="!isLoggedIn() || isLoggedIn()" routerLink="/gestionclients">Clients</a></li>
 
+                  <li><a *ngIf="!isLoggedIn() || isLoggedIn()" routerLink="/about">A Propos</a></li>
+                  <li><a *ngIf="!isLoggedIn() || isLoggedIn()" href="#">Contacts</a></li>
+                  <!-- <li><a *ngIf="userService.roleMatch(['User'])" href="#">Contacts</a></li> -->
+                  <li><a *ngIf="!isLoggedIn()" routerLink="/login" class="btn">S'identifier</a></li>
+                  <li><a *ngIf="isLoggedIn()" routerLink="/home" (click)="logout()" class="btn">Se déconnecter</a></li>
+                </ul>
+              </div>
+    
+              <div class="overlay"></div>
+              <div class="hamburger-menu">
+                <div class="bar"></div>
+              </div>
+            </div>
+            </div>
+      </header>
+      </main>
+  </body>
+  
+  </html>

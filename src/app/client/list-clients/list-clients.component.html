@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -9,24 +8,43 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Sans-serif">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
 </head>
-
 <body>
-
   <div class="buttonAnnuler">
-    <a style="margin-top: -95px;margin-left: 1010px; background-color: gray;border-color: gray; width: 110px;"
-      (click)="removeFilter()" class="btn btn-primary"><i class="fas fa-times"></i>
-      <span style="margin-left: 5px;">Annuler</span></a>
+    <a
+      (click)="removeFilter()" class="btn btn-primary">
+      <span >Annuler</span></a>
   </div>
+  <!-- <div style="width: 200px;margin-left:1000px ;"  >
+    <input type="text" class="form-control" name="nom" [(ngModel)]="nom" (ngModelChange)="searchBy()" placeholder="Donner le nom">
+  </div>
+  <br>
+  <br> -->
+  <!-- <div class="ng-autocomplete">
+    <ng-autocomplete [data]="clients" [searchKeyword]="keyword" placeholder="Select country"
+      (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+      [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+  
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.email"></a>
+    </ng-template>
+  
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div> -->
+  
 
-  <div style="margin-top: -10px;" class="table-responsive">
+  <div style="margin-top: -20px;" class="table-responsive">
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
-          <div class="col-xs-5">
+          <div>
             <h2>Gestion <b>des Clients</b></h2>
+            
           </div>
           <div class="col-xs-7">
             <a (click)="toAdd()" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Creer Nouveau
@@ -38,10 +56,10 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Code Client</th>
+            <th (click)="sort('code_client')">Code Client&nbsp;<i class="fa fa-sort"></i></th>
             <th>Matricule CNRPS</th>
             <th>Cin</th>
-            <th>Nom</th>
+            <th (click)="sort('nom')">Nom&nbsp;<i class="fa fa-sort"></i></th>
             <th>Prénom</th>
             <th>Addresse Email</th>
             <th>Numéro Téléphone</th>
@@ -53,8 +71,7 @@
         </thead>
         <tbody>
           <tr>
-          <tr *ngFor="let client of filteredClients| paginate:{itemsPerPage:5,currentPage:page};"
-          [ngClass]="[client % 2 == 1 ? 'odd-row' : 'even-row']">
+          <tr *ngFor="let client of filteredClients| paginate:{itemsPerPage:5,currentPage:page}|orderBy:key:reverse;" >
             <td>{{client.code_client}}</td>
             <td>{{client.mat}}</td>
             <td>{{client.cin}}</td>
@@ -75,12 +92,14 @@
             </td>
           </tr>
         </tbody>
-      </table> 
+      </table>
       <div class="clearfix">
         <div class="hint-text">Page numéro <b>{{page}}</b></div>
-        <pagination-controls class="pagination" (pageChange)="page=$event"  nextLabel="Suivant" previousLabel="Précédent"></pagination-controls>
+        <pagination-controls class="pagination" (pageChange)="page=$event" nextLabel="Suivant"
+          previousLabel="Précédent"></pagination-controls>
       </div>
     </div>
   </div>
 </body>
+
 </html>

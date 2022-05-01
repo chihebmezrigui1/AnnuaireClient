@@ -1,8 +1,16 @@
 <app-navbar></app-navbar>
-<div style="margin-top: -640px;" class="container">
 
-    <div style="margin-left: 50px;">
-        <app-search (groupFilters)="filters = $event" (autoSearch)="searchText = $event"></app-search>
-    </div>
-    <app-list-clients [groupFilters]="filters" [searchByKeyword]="searchText"></app-list-clients>
-</div>
+<body style="margin-top: -950px;">
+    <main>
+        <div class="big-wrapper light">
+            <div class="conatiner" style="width: 1300px; margin-left: 110px;">
+                <div>
+                    <app-search (groupFilters)="filters = $event" (autoSearch)="searchText = $event"></app-search>
+                </div>
+                <div >
+                    <app-list-clients [groupFilters]="filters" [searchByKeyword]="searchText"></app-list-clients>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
