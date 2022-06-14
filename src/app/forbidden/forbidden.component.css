@@ -1,7 +1,55 @@
-.person {
-    margin-left: 340px;
-    margin-top: 90px;
-    width: 40%;
-    transform: translate(15%, 25px);
-  }
-  
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat",sans-serif;
+  min-height: 100vh;
+background-image: linear-gradient(to right bottom, #5bacdf, #5bacdf, #5bacdf, #5bacdf, #5bacdf);
+}
+
+.container{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #343434
+}
+
+.container h1{
+  font-size: 200px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 20px;
+  color: #fff;
+
+}
+
+h2{
+  font-size:40px;
+  color: #fff;
+  color: #fff;
+
+}
+p{
+  color: #fff;
+  font-weight: 600;
+}
+.container a{
+  text-decoration: none;
+  background: #fff;
+  color: #262626;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 25px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: 0.4s;font-weight: bold;
+  margin-top: 20px;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.container a:hover{
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}

@@ -11,34 +11,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 </head>
-<body>
-  <div class="buttonAnnuler">
-    <a
-      (click)="removeFilter()" class="btn btn-primary">
-      <span >Annuler</span></a>
+<body style="margin-top: -250px;">
+  <div class="input-field" style="margin-left: 640px;margin-bottom: 100px;">
+    <div class="group-btn">
+      <button class="btn-delete"  (click)="removeFilter()">Effacer le filtre</button>
+    </div>
   </div>
-  <!-- <div style="width: 200px;margin-left:1000px ;"  >
-    <input type="text" class="form-control" name="nom" [(ngModel)]="nom" (ngModelChange)="searchBy()" placeholder="Donner le nom">
-  </div>
-  <br>
-  <br> -->
-  <!-- <div class="ng-autocomplete">
-    <ng-autocomplete [data]="clients" [searchKeyword]="keyword" placeholder="Select country"
-      (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
-      [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
-    </ng-autocomplete>
-  
-    <ng-template #itemTemplate let-item>
-      <a [innerHTML]="item.email"></a>
-    </ng-template>
-  
-    <ng-template #notFoundTemplate let-notFound>
-      <div [innerHTML]="notFound"></div>
-    </ng-template>
-  </div> -->
-  
-
-  <div style="margin-top: -20px;" class="table-responsive">
+  <div style="margin-top: -60px;" class="table-responsive">
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
@@ -52,7 +31,6 @@
           </div>
         </div>
       </div>
-
       <table class="table table-hover">
         <thead>
           <tr>
@@ -71,7 +49,7 @@
         </thead>
         <tbody>
           <tr>
-          <tr *ngFor="let client of filteredClients| paginate:{itemsPerPage:5,currentPage:page}|orderBy:key:reverse;" >
+          <tr *ngFor="let client of filteredClients| paginate:{itemsPerPage:3,currentPage:page}|orderBy:key:reverse;" >
             <td>{{client.code_client}}</td>
             <td>{{client.mat}}</td>
             <td>{{client.cin}}</td>
@@ -93,6 +71,7 @@
           </tr>
         </tbody>
       </table>
+     
       <div class="clearfix">
         <div class="hint-text">Page numéro <b>{{page}}</b></div>
         <pagination-controls class="pagination" (pageChange)="page=$event" nextLabel="Suivant"

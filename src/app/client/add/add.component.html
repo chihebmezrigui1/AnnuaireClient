@@ -1,49 +1,40 @@
-<app-navbar></app-navbar>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="add.component.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body style="background-color: #f1f8fc; margin-top: -752px;">
-  <div style="margin-top: 180px;"  class="container">
-   <div class="title">Ajout du client</div>
-   <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong> Ajout Confimré !</strong> Client Ajouté !.
-    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+<app-sidebar></app-sidebar>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="add.component.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body style="background-color: #f1f8fc; margin-top: -752px;height: 750px;width: 2000;margin-left: -100px;">
+  <div class="container" style="margin-left: 200px">
     <div class="content">
       <form [formGroup]="addForm" (ngSubmit)="AddClient(addForm)">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Code Client *</span>
+            <span class="details">Code client</span>
             <input type="number" formControlName="code_client" #code_client (ngModel)="code_client" class="form-control"
-              placeholder="Code Client"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid) }">
+            placeholder="Code Client"
+            [ngClass]="{ 'is-invalid': (submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid) }">
             <div class="invalid-feedback"
-              *ngIf="(submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid)">
-              <div *ngIf="addForm.controls['code_client'].errors['required']">Champ vide</div>
-              <div *ngIf="addForm.controls['code_client'].errors['pattern']">Code Client doit composé de 10 chiffres
-              </div>
+            *ngIf="(submitted && addForm.controls['code_client'].errors) || (!addForm.controls['code_client'].pristine && addForm.controls['code_client'].invalid)">
+            <div *ngIf="addForm.controls['code_client'].errors['required']">Champ vide</div>
+            <div *ngIf="addForm.controls['code_client'].errors['pattern']">Code Client doit composé de 8 chiffres
             </div>
+          </div>
           </div>
           <div class="input-box">
-            <span class="details">Matricule CNRPS *</span>
+            <span class="details">Matricule CNRPS</span>
             <input type="number" formControlName="mat" #mat (ngModel)="mat" class="form-control"
-              placeholder="matricule Cnrps"
-              [ngClass]="{ 'is-invalid': (submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid) }">
-            <div class="invalid-feedback"
-              *ngIf="(submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid)">
-              <div *ngIf="addForm.controls['mat'].errors['required']">Champ vide</div>
-              <div *ngIf="addForm.controls['mat'].errors['pattern']">Code Client doit composé de 10 chiffres
-              </div>
+            placeholder="matricule Cnrps"
+            [ngClass]="{ 'is-invalid': (submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid) }">
+          <div class="invalid-feedback"
+            *ngIf="(submitted && addForm.controls['mat'].errors) || (!addForm.controls['mat'].pristine && addForm.controls['mat'].invalid)">
+            <div *ngIf="addForm.controls['mat'].errors['required']">Champ vide</div>
+            <div *ngIf="addForm.controls['mat'].errors['pattern']">matricule doit composé de 8 chiffres
             </div>
           </div>
-
+          </div>
           <div class="input-box">
             <span class="details">Nom *</span>
             <input type="text" formControlName="nom" #nom (ngModel)="nom" class="form-control" placeholder="Nom :"
@@ -55,8 +46,6 @@
               <div *ngIf="addForm.controls['nom'].errors['pattern']">Nom avec au minumum 3 caracteres</div>
             </div>
           </div>
-
-
 
           <div class="input-box">
             <span class="details">Prénom</span>
@@ -73,7 +62,7 @@
           <div class="input-box">
             <span class="details">Adresse Email</span>
             <input type="text" formControlName="email" #email (ngModel)="email" class="form-control"
-              placeholder="Enter email"
+              placeholder="Adresse Email"
               [ngClass]="{ 'is-invalid': (submitted && addForm.controls['email'].errors) || (!addForm.controls['email'].pristine && addForm.controls['email'].invalid) }">
             <!-- Validation messages -->
             <div class="invalid-feedback"
@@ -134,14 +123,14 @@
               <div *ngIf="addForm.controls['structure'].errors['pattern']">Structure avec au minumum 3 caracteres</div>
             </div>
           </div>
-          <small style="margin-left: 20px;font-weight: 100;color: #4c6497;">Les Champs à * sont obligatoires</small>
+          <small style="margin-left: 20px;color: #4c6497;">Les Champs à * sont obligatoires</small>
         </div>
         <div class="button">
-          <input type="submit" value="Ajouter">
+          <input type="submit" value="Enregistrer client">
         </div>
       </form>
     </div>
   </div>
-</body>
 
+</body>
 </html>

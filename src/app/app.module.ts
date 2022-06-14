@@ -20,14 +20,15 @@ import { ClientDetailsComponent } from './client/client-details/client-details.c
 import { UpdateClientComponent } from './client/update-client/update-client.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FilterPipe } from './pipe/filter.pipe';
 import { ClientComponent } from './client/client/client.component';
 import { SearchComponent } from './client/search/search.component';
 import { ContactComponent } from './contact/contact.component';
-import { SearchAllColumnPipe } from './pipe/search-all-column.pipe';
 import { HomeComponent } from './home/home.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import Swal from 'sweetalert2';
 
 
 
@@ -44,12 +45,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     ClientDetailsComponent,
     UpdateClientComponent,
-    FilterPipe,
     ClientComponent,
     SearchComponent,
     ContactComponent,
-    SearchAllColumnPipe,
     HomeComponent,
+    SidebarComponent,
+    ContactsComponent,
         
 
   ],
@@ -64,8 +65,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AutocompleteLibModule,
     NgSelectModule,
     OrderModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
   ],
   providers: [
     UserAuthService,

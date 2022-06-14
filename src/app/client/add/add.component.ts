@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientService } from 'src/app/services/Client/client.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add',
@@ -20,7 +21,6 @@ export class AddComponent implements OnInit {
   alert:boolean=false
   addForm: FormGroup;
   submitted = false;
-adds:FormGroup
   constructor(private clientService: ClientService, private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit() {
@@ -43,17 +43,22 @@ adds:FormGroup
     });
   }
 
+  changeAlertPosition() {
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'le client est bien ajouté',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
   AddClient(addForm: FormGroup) {
     console.log(addForm.controls);
     this.clientService.AddClients(addForm.value).subscribe();
-    setTimeout('1000');
-    addForm.reset();
     console.log("Client bien ajouté");
-      this.alert=true;
-  }
-
-  closeAlert(){
-    this.alert=false;
+    this.changeAlertPosition();      
+    this.router.navigate(['/gestionclients'])
   }
 
 }

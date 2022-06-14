@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Client } from 'src/app/models/Client';
+import { Ministere } from 'src/app/models/Ministere';
+import { Structure } from 'src/app/models/Structure';
 import { ClientService } from 'src/app/services/Client/client.service';
 
 
@@ -14,13 +16,10 @@ export class SearchComponent implements OnInit {
   filteredClients: any[] = [];
   form: FormGroup;
   clients:Client[]
-  client:Client;
-  nom:any
-  public nomValue: string;
-  public prenomValue: string;
-  public structureValue: string;
-
-
+  public nom: string;
+  public prenom: string;
+  public structure: Structure;
+  public ministere: Ministere;
   
   ministeres = ["Ministère de l'intérieur", "Ministère des finances", "Ministère de l’Industrie, des Mines et de l’Energie", "Ministère du Commerce et du Développement des Exportations"
   , "Ministère de la santé", "Ministère de l’Agriculture, des Ressources Hydrauliques et de la Pêche Maritime", "Ministère de l'éducation", "Ministère de l'enseignement supérieur et de la recherche scientifique"
@@ -29,6 +28,8 @@ export class SearchComponent implements OnInit {
 
   @Output() autoSearch: EventEmitter<string> = new EventEmitter<string>();
   @Output() groupFilters: EventEmitter<any>  = new EventEmitter<any>();
+
+
   
   constructor(private fb: FormBuilder,private clientService:ClientService) { }
 
@@ -41,12 +42,15 @@ export class SearchComponent implements OnInit {
     this.form = this.fb.group({
       nom: new FormControl(''),
       prenom: new FormControl(''),
-      structure:new FormControl('')
-    
+      structure :new FormControl(''),
+      ministere:new FormControl('')
     });
   }
+
+  //datalist ..........
+
   public saveNom(e): void {
-    let find = this.clients.find(x => x?.nom === e.target.value);
+    let find = this.clients.find(x => x?.nom == e.target.value);
     console.log(find?.idC);
   }
   public savePrenom(e): void {
@@ -57,23 +61,28 @@ export class SearchComponent implements OnInit {
     let find = this.clients.find(x => x?.structure.libelle === e.target.value);
     console.log(find?.idC);
   }
+  public saveMinistere(e): void {
+    let find = this.clients.find(x => x?.structure.ministere.libelle === e.target.value);
+    console.log(find?.idC);
+  }
 
-  
-  getClients() {
+  //affichage des clients
+public getClients() {
     this.clientService.getClients().subscribe((res) => {
-      this.clients=res;
-      console.log(res);    
+    this.clients=res;
+    console.log(res);
     })
-    this.filteredClients = this.filteredClients.length > 0 ? this.filteredClients : this.clients;                
+  }
+
+//button search
+search(filters: any): void {
+    Object.keys(filters).forEach(key => filters[key] === '' ? delete filters[key] : key.toLocaleLowerCase);
+    this.groupFilters.emit(filters); 
+    console.log(filters);
+      
+
   }
 
 
-  search(filters: Client): void {
-    Object.keys(filters).forEach(key => filters[key] === '' ? delete filters[key] : key.toLowerCase);
-    this.groupFilters.emit(filters);    
-  }
-  removeFilter() {
-    this.filteredClients = [...this.clients];
-    
-  }
+
 }

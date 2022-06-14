@@ -1,49 +1,50 @@
-<app-navbar></app-navbar>
-<body style="margin-left:0px; margin-top: -630px;">
+<app-sidebar></app-sidebar>
 
-<div  *ngIf="client">
-  <br>
-  <br>
-  <br>
-  <div style="margin-left: 80px;">
-    <h2>Details du Client</h2> 
-    <hr/>
+<body style="margin-left:220px; margin-top: -750px;">
+
+  <div *ngIf="client">
+    <br>
+    <br>
+    <br>
+    <div style="margin-left: 80px;">
+      <h2>Details du Client</h2>
+      <hr />
+      <div>
+        <label><b>Code: </b>{{client.code_client}}</label>
+      </div>
+      <div>
+        <label><b>Matricule Cnrps: </b>{{client.mat}}</label>
+      </div>
+      <div>
+        <label><b>Cin: </b>{{client.cin}}</label>
+      </div>
 
       <div>
-        <label><b>Nom: </b>{{client.nom}}</label> 
+        <label><b>Nom: </b>{{client.nom}}</label>
       </div>
       <div>
-        <label><b>Prénom: </b>{{client.prenom}}</label> 
+        <label><b>Prénom: </b>{{client.prenom}}</label>
       </div>
       <div>
-        <label><b>Code: </b>{{client.code_client}}</label> 
+        <label><b>Adresse Email : </b>{{client.email}}</label>
       </div>
       <div>
-        <label><b>Cin: </b>{{client.cin}}</label> 
+        <label><b>Numéro de teléphone : </b>{{client.tel}}</label>
       </div>
       <div>
-        <label><b>Matricule Cnrps: </b>{{client.mat}}</label> 
+        <label><b>Numéro Fix : </b>{{client.fix}}</label>
       </div>
       <div>
-        <label><b>Adresse Email : </b>{{client.email}}</label> 
+        <label><b>Structure : </b>{{client.structure.libelle}}</label>
       </div>
       <div>
-        <label><b>Numéro de teléphone : </b>{{client.tel}}</label> 
+        <label><b>Ministère : </b>{{client.structure.ministere.libelle}}</label>
       </div>
-      <div>
-        <label><b>Numéro Fix : </b>{{client.fix}}</label> 
-      </div>
-      <div>
-        <label><b>Ministere : </b>{{client.structure.ministere.libelle}}</label> 
-      </div>
-      <div>
-        <label><b>Structure : </b>{{client.structure.libelle}}</label> 
-      </div>
-    <hr>
-      <button (click)="list()" class="btn btn-primary">Retour</button><br>
+      <hr>
+      <button (click)="retourList()" class="btn btn-primary">Retour</button><br>
+
+    </div>
 
   </div>
-  
-</div>
-<br>
+  <br>
 </body>

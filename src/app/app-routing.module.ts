@@ -7,20 +7,23 @@ import { ClientComponent } from './client/client/client.component';
 import { ListClientsComponent } from './client/list-clients/list-clients.component';
 import { UpdateClientComponent } from './client/update-client/update-client.component';
 import { ContactComponent } from './contact/contact.component';
+import { ContactsComponent } from './contacts/contacts.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
 const routes: Routes = [
-  {path:'',pathMatch:'full',redirectTo:'/home'},
+  {path:'',pathMatch:'full',redirectTo:'/acceuil'},
   {path:'to',component:AppComponent},
   {path:'navbar',component:NavbarComponent},
-  {path:'home',component:HomeComponent},
+  {path:'contact',component:ContactComponent},
+  {path:'acceuil',component:HomeComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'login',component:LoginComponent},
   {path:'forbidden',component:ForbiddenComponent},
@@ -30,7 +33,9 @@ const routes: Routes = [
   {path: 'details/:idC', component: ClientDetailsComponent },
   {path:'gestionclients',component:ClientComponent},
   {path:'contact',component:ContactComponent},
+  {path:'contacts',component:ContactsComponent},
   {path:'listClients',component:ListClientsComponent},
+  {path:'sidebar',component:SidebarComponent},
 
 
 ];

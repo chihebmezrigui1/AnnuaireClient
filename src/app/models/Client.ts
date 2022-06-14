@@ -1,3 +1,4 @@
+import { Ministere } from "./Ministere";
 import { Structure } from "./Structure";
 
 export class Client {
@@ -12,6 +13,5 @@ export class Client {
     fix:number;
     mat:number;
     structure:Structure;
-    isDeleting: boolean = false;
-
+    ministere:Ministere;
 }

@@ -1,33 +1,136 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-body{
-    font-family: "Poppins", sans-serif;
-    background-color: transparent;
+* {
+    box-sizing: border-box;
 }
-.input1 {
-    margin-top: 360px;
-    width: 190px; 
-    margin-left: 200px;
-}
-.input2{
-    width: 190px; 
-    margin-left: 400px;
-    margin-top: -30px;
 
+.s010 {
+    min-height: 100vh;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #d9eff5;
+    padding: 15px;
+    font-family: 'Lato', sans-serif;
 }
-.input3{
-    width: 190px; 
-    margin-left: 400px;
-    margin-top: 0px;
 
+
+
+.s010 form .inner-form .input-field input {
+    padding-left: 20px;
+    display: block;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: 1px solid #0a436e;
+    color: #0a436e;
+    font-family: 'Lato', sans-serif;
 }
-.btn {
-    background-color: #0572a9;
-    margin-left: 600px;
-    margin-top: -60px;
-    border-color: #0572a9;
-  }
-  .btn:hover {
+
+
+
+
+.s010 form .inner-form .input-field input:hover,
+.s010 form .inner-form .input-field input:focus {
+    outline: 0;
+}
+
+.s010 form .inner-form .input-field .btn-search {
+    min-width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    background: #0572a9;
+    white-space: nowrap;
+    border-radius: 20px;
+    font-size: 14px;
     color: #fff;
-    background-color: #5bacdf;
-    border-color: #5bacdf;
-  }
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+    font-weight: 400;
+    z-index: 0;
+    position: relative;
+}
+
+.s010 form .inner-form .input-field .btn-search:before {
+    border-radius: inherit;
+    background: #088cce;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -1;
+    transition: all .2s ease-out, color .2s ease-out;
+}
+
+.s010 form .inner-form .input-field .btn-search:hover::before {
+    opacity: 1;
+}
+
+.s010 form .inner-form .input-field .btn-search:focus {
+    outline: 0;
+}
+
+.s010 form .inner-form .input-field .btn-delete {
+    min-width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    margin-right: 10px;
+    background: rgb(193, 191, 191);
+    white-space: nowrap;
+    border-radius: 18px;
+    font-size: 14px;
+    color: #0a436e;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+    font-weight: 400;
+}
+.s010 form .inner-form .advance-search {
+    height: 320px;
+    background: #f3fbff;
+    padding: 40px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+
+
+.s010 form .inner-form .advance-search .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+.s010 form .inner-form .advance-search .row.third .input-field {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.s010 form .inner-form .advance-search .input-field {
+    width: calc((100% - 40px) / 3);
+}
+
+.s010 form .inner-form .advance-search .input-select {
+    height: 40px;
+}
+
+.s010 form .inner-form .advance-search .input-select {
+    height: 40px;
+}

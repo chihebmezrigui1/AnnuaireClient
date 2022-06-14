@@ -20,7 +20,7 @@ export class ClientService {
   private structure: Structure = { libelle: '', ministere: { libelle: '' } };
   constructor(private httpClient: HttpClient) { }
   API = 'http://localhost:9090/client'
-  API1='http://localhost:9090/client/findClient'
+  API1='http://localhost:9090/client/getClient'
   API2='http://localhost:9090/client/updateClient'
   
   setGroupFilter$ = new Subject<any>();
@@ -48,7 +48,6 @@ export class ClientService {
     return this.httpClient.get<Client>(`${this.API}/${idC}`);
 
   }
-  
   updateClient(idC: number,ClientData:any): Observable<Client> {
     this.structure.libelle = ClientData.structure;
     this.structure.ministere.libelle = ClientData.ministere;

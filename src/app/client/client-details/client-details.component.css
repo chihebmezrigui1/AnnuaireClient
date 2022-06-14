@@ -1,7 +1,8 @@
 body{
   font-weight: 300;
-  background-color: #f1f8fc;
-  font-family: 'Poppins',sans-serif
+  background: #f1f8fc;
+  font-family: 'Poppins',sans-serif;
+  height: 100%;
 }
 b{
   font-weight: 600;

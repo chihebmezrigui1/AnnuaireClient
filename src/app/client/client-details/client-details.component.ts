@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Ministere } from 'src/app/models/Ministere';
 import { Structure } from 'src/app/models/Structure';
 import { ClientService } from 'src/app/services/Client/client.service';
 import { Client } from '../../models/Client';
@@ -13,7 +14,9 @@ export class ClientDetailsComponent implements OnInit {
 
   idC: number;
   client: Client;
-  libelle:Structure[]
+  libelle:Structure
+  ministere:Ministere
+  
   constructor(private route:ActivatedRoute,private clientService:ClientService,private router:Router) { }
 
   ngOnInit(): void {
@@ -27,7 +30,9 @@ export class ClientDetailsComponent implements OnInit {
         this.client = data;
       }, error => console.log(error));
   }
-  list(){
+
+  // retour a la liste des clients
+  retourList(){
     this.router.navigate(['gestionclients']);
   }
   

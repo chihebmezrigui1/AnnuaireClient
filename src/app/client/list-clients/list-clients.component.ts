@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/models/Client';
 import { ClientService } from 'src/app/services/Client/client.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-clients',
@@ -20,13 +21,13 @@ export class ListClientsComponent implements OnInit {
   @Input() searchByKeyword: string;
   clients: Client[];
   page: number = 1;
-  nom:any;
+  nom: any;
   form: FormGroup;
-  prenom:string
-  filteredClients: any[] = [];
-  keyword = 'email';
-
-  constructor(private clientService: ClientService, private router: Router,private ref: ChangeDetectorRef,private fb:FormBuilder) {
+  prenom: string
+  filteredClients: Client[] = [];
+  bool=true;
+  newDeb:any;
+  constructor(private clientService: ClientService, private router: Router, private ref: ChangeDetectorRef, private fb: FormBuilder) {
   }
 
 
@@ -34,20 +35,15 @@ export class ListClientsComponent implements OnInit {
     this.getClients();
   }
 
-  searchBy(){
-    if(this.nom ==""){
-      return this.ngOnInit
-    }else{
-      this.clients=this.clients.filter(res=>{
-        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
-      });
-    }
-
-  }
+ 
 
   ngOnChanges(): void {
-    if (this.groupFilters) this.filterClientList(this.groupFilters, this.clients);
+    if (this.groupFilters) {
+      this.filterClientList(this.groupFilters, this.clients);
+    }
   }
+
+  //filter table
   filterClientList(filters: any, clients: any): void {
     this.filteredClients = this.clients;     //Reset Client List
     const keys = Object.keys(filters);
@@ -57,75 +53,92 @@ export class ListClientsComponent implements OnInit {
   }
 
 
+//effacer le filtrage
   public removeFilter() {
     this.filteredClients = [...this.clients];
+    this.nom = ' ';
+    this.prenom = '';
+
   }
 
 
-     // Crud ------------------------------------
+  // Crud ------------------------------------
+
+
+  //afficher tous les clients
   getClients() {
     this.clientService.getClients().subscribe((res) => {
-      this.clients=res;
-      console.log(res);    
+      this.clients = res;
+      console.log(res);
     })
-    this.filteredClients = this.filteredClients.length > 0 ? this.filteredClients : this.clients;                
+    this.filteredClients = this.filteredClients.length > 0 ? this.filteredClients : this.clients;
   }
 
 
+  // afficher un client par id
   getClientByIdC(idC: number): Client {
     clients: this.getClients()
     return this.clients.find(client => client.idC == idC)
 
   }
-  public deleteClient(client: any) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf)
 
-      this.clientService.deleteClient(client.idC).subscribe(
-        (resp) => {
-          console.log(resp);
-          this.getClients();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-      this.router.navigate(['/gestionclients'])
-  .then(() => {
-    window.location.reload();
-  });
+//supprimer un client
+  public deleteClient(client: any) {
+    Swal.fire({
+      title: 'Vous etes sur !?',
+      text: 'Etes-vous sûr(e) de vouloir supprimer le client',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui',
+      cancelButtonText: 'Non',
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+
+        this.clientService.deleteClient(client.idC).subscribe(
+          (resp) => {
+            console.log(resp);
+            this.getClients();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+        window.location.reload();
+
+      } else if (result.isDismissed) {
+
+        this.router.navigate(['/gestionclients'])
+
+
+      }
+    })
+
   }
 
+  // details du client
   clientDetails(idC: number) {
     this.router.navigate(['details', idC]);
   }
 
+ // edit client par id
   edit(idC: number) {
     this.router.navigate(['update-client', idC]);
   }
+
+  // vers la page d'ajout
   toAdd() {
     this.router.navigate(['/add']);
   }
 
-  key='code_client';
-  reverse:boolean=false;
-  sort(key){
-    this.key=key;
-    this.reverse=!this.reverse
+
+  key = 'code_client';
+  reverse: boolean = false;
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse
 
   }
-  // selectEvent(item) {
-  //   // do something with selected item
-  // }
-
-  // onChangeSearch(val: string) {
-  //   // fetch remote data from here
-  //   // And reassign the 'data' which is binded to 'data' property.
-  // }
-  
-  // onFocused(e){
-  //   // do something when input is focused
-  // }
-
-  //-----------------------------------------------------------------------
+ 
 }

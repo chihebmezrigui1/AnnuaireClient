@@ -1,32 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="navbar.component.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-  </head>
-  <body>
-    <header>
-       <div class="inner-width">
-        <a href="#" class="logo"><img src="" alt=""></a>
-        <i class="menu-toggle-btn fas fa-bars"></i>
-        <nav class="navigation-menu">
-          <a *ngIf="userService.roleMatch(['Admin'])" routerLink="/dashboard"><i></i>Profile</a>
-          <a *ngIf="userService.roleMatch(['User'])" routerLink="/home"><i></i>Acceuil</a>
-          <a *ngIf="userService.roleMatch(['User'])" routerLink="/about"><i></i>A Propos</a>
-          <a *ngIf="userService.roleMatch(['Admin'])"><i></i> Parametres</a>
-          <a *ngIf="userService.roleMatch(['User'])" routerLink="/gestionclients"><i></i>Clients</a>
-          <a *ngIf="userService.roleMatch(['User'])" href="#"><i></i>Contacts</a>
-          <a *ngIf="!isLoggedIn()" routerLink="/login"><i></i>Login</a>
-          <a *ngIf="isLoggedIn()" routerLink="/login" (click)="logout()"><i></i>Se Déconnecter</a>
-        </nav>
-      </div>
-    </header>
-  </body> -->
-  <!DOCTYPE html>
+
+<!DOCTYPE html>
   <html lang="en">
   
   <head>
@@ -45,7 +18,7 @@
             <div class="container">
               <div class="logo">
                 <img src="assets/img/logo.png" alt="Logo" />
-                <h4 routerLink="/home">Centre National de l'informatique</h4>
+                <h6 routerLink="/home">Centre National de l'informatique</h6>
               </div>
     
               <div class="links">
@@ -53,10 +26,9 @@
                   <li><a *ngIf="!isLoggedIn() || isLoggedIn()" routerLink="/gestionclients">Clients</a></li>
 
                   <li><a *ngIf="!isLoggedIn() || isLoggedIn()" routerLink="/about">A Propos</a></li>
-                  <li><a *ngIf="!isLoggedIn() || isLoggedIn()" href="#">Contacts</a></li>
-                  <!-- <li><a *ngIf="userService.roleMatch(['User'])" href="#">Contacts</a></li> -->
+                  <li><a *ngIf="!isLoggedIn() || isLoggedIn()" routerLink="/contact">Contacts</a></li>
                   <li><a *ngIf="!isLoggedIn()" routerLink="/login" class="btn">S'identifier</a></li>
-                  <li><a *ngIf="isLoggedIn()" routerLink="/home" (click)="logout()" class="btn">Se déconnecter</a></li>
+                  <li><a *ngIf="isLoggedIn()" routerLink="/acceuil" (click)="logout()" class="btn">Se déconnecter</a></li>
                 </ul>
               </div>
     
